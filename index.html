@@ -8,6 +8,7 @@
 <meta property="og:title" content="Sourav Paul, Ph.D.">
 <meta property="og:description" content="Electrocatalysis and the electrified interface - DFT, machine-learned potentials, and electrochemical synthesis of ammonia, urea and nitric acid.">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://souravpaulpaul3-bit.github.io/">
 </head>
 <body><title>Sourav Paul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,11 +115,14 @@ em.j{font-style:italic}
 .nrow p b{font-weight:600}
 
 /* METRICS */
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:clamp(30px,4.5vw,48px);opacity:0;animation:fu 1s var(--ez) .64s forwards}
-.metric{background:var(--surface);padding:20px 18px;transition:background .35s var(--ez)}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:clamp(30px,4.5vw,48px);opacity:0;animation:fu 1s var(--ez) .64s forwards}
+.metric{background:var(--surface);padding:18px 14px;transition:background .35s var(--ez)}
 .metric:hover{background:var(--blue-soft)}
-.metric b{font-family:var(--d);font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:-.035em;display:block;line-height:1;font-variant-numeric:tabular-nums}
-.metric span{font-family:var(--m);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);display:block;margin-top:9px}
+.metric b{font-family:var(--d);font-size:clamp(26px,3.2vw,36px);font-weight:500;letter-spacing:-.035em;display:block;line-height:1;font-variant-numeric:tabular-nums}
+.metric span{font-family:var(--m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:block;margin-top:9px;line-height:1.4}
+.metric-note{font-family:var(--m);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-top:11px;opacity:0;animation:fu 1s var(--ez) .72s forwards}
+.metric-note a{color:var(--blue);border-bottom:1px solid var(--rule-2)}
+.metric-note a:hover{border-color:var(--blue)}
 
 /* SECTIONS */
 .sec{padding:clamp(56px,8vw,104px) 0}
@@ -316,7 +320,7 @@ em.j{font-style:italic}
   .hero-grid{grid-template-columns:1fr;gap:28px}
   .portrait{max-width:300px}
   .af{flex:1 1 132px;padding:6px 14px}
-  .metrics{grid-template-columns:1fr 1fr}
+  .metrics{grid-template-columns:repeat(3,1fr)}
   .loop-top{grid-template-columns:1fr 1fr}
   .loop-detail{grid-template-columns:1fr}
   .found,.pats,.awards,.skills,.tsplit{grid-template-columns:1fr}
@@ -326,6 +330,7 @@ em.j{font-style:italic}
 @media (max-width:640px){
   .nav-links{display:none}
   .gal{columns:1}
+  .metrics{grid-template-columns:1fr 1fr}
   .af{flex:1 1 100%;border-left:0;padding:10px 0;border-top:1px solid var(--rule)}
   .af:first-child{border-top:0}
   .nrow{grid-template-columns:1fr;gap:4px}
@@ -348,8 +353,7 @@ em.j{font-style:italic}
     <div class="nav-links">
       <a href="#news">News</a><a href="#research">Research</a><a href="#loop">Method</a><a href="#pubs">Publications</a><a href="#experience">Experience</a><a href="#teaching">Teaching</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
     </div>
-    <!-- TODO: replace # with your CV PDF link -->
-    <a class="btn btn-p btn-s" href="#"><span>Curriculum Vitae</span></a>
+    <a class="btn btn-p btn-s" href="Dr_Sourav_Paul_CV.pdf" target="_blank" rel="noopener"><span>Curriculum Vitae</span></a>
   </div>
 </nav>
 
@@ -362,13 +366,12 @@ em.j{font-style:italic}
     <p class="role">Computational and experimental chemist working on <b>electrocatalysis and the electrified interface</b>. Department of Materials Science &amp; Engineering, University of Toronto, with Prof. Chandra Veer Singh.</p>
     <p class="thesis">Selectivity at an electrified interface is not a property of the catalyst alone &mdash; it is the <u>coupled state of four variables</u>: the coordination environment of the active metal centre, the local electric field, the solvation and ion structure of the double layer, and interfacial mass transport.</p>
     <div class="hcta">
-      <!-- TODO: replace # with your Google Scholar and ORCID URLs -->
       <a class="btn btn-p" href="mailto:souravpaul.paul3@gmail.com"><span>
         <svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 4.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         Email</span></a>
-      <a class="btn btn-g" href="#"><span>Google Scholar</span></a>
-      <a class="btn btn-g" href="#"><span>ORCID</span></a>
-      <a class="btn btn-g" href="#pubs"><span>Publications</span></a>
+      <a class="btn btn-g" href="https://scholar.google.ca/citations?user=nSrFnmMAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span>Google Scholar &nearr;</span></a>
+      <a class="btn btn-g" href="https://orcid.org/0000-0002-6215-8183" target="_blank" rel="noopener"><span>ORCID &nearr;</span></a>
+      <a class="btn btn-g" href="Dr_Sourav_Paul_CV.pdf" target="_blank" rel="noopener"><span>CV (PDF)</span></a>
     </div>
     </div>
 
@@ -381,9 +384,12 @@ em.j{font-style:italic}
     <div class="metrics">
       <div class="metric"><b>21</b><span>Peer-reviewed articles</span></div>
       <div class="metric"><b>8</b><span>As first author</span></div>
-      <div class="metric"><b>3</b><span>Invited reviews</span></div>
+      <div class="metric"><b>1,435</b><span>Citations</span></div>
+      <div class="metric"><b>16</b><span>h-index</span></div>
+      <div class="metric"><b>18</b><span>i10-index</span></div>
       <div class="metric"><b>5</b><span>Patent applications</span></div>
     </div>
+    <p class="metric-note">Citation metrics from <a href="https://scholar.google.ca/citations?user=nSrFnmMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>, August 2026 &middot; 3 of the 21 articles are invited reviews</p>
   </div>
 </header>
 
@@ -392,28 +398,24 @@ em.j{font-style:italic}
     <span class="afil-lbl">Research training and affiliations</span>
     <div class="afil-in">
       <div class="af">
-        <span class="lg"><img src="logos/utoronto.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;UT&lt;/span&gt;'"></span>
+        <span class="lg"><img src="logos/uoft.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;UT&lt;/span&gt;'"></span>
         <b>University of Toronto</b><span>Postdoctoral &middot; 2025&ndash;</span>
       </div>
       <div class="af">
-        <span class="lg"><img src="logos/ualberta.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;UA&lt;/span&gt;'"></span>
+        <span class="lg"><img src="logos/uofa.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;UA&lt;/span&gt;'"></span>
         <b>University of Alberta</b><span>SERB Fellow &middot; 2023&ndash;24</span>
       </div>
       <div class="af">
-        <span class="lg"><img src="logos/calcutta.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;CU&lt;/span&gt;'"></span>
+        <span class="lg"><img src="logos/CU.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;CU&lt;/span&gt;'"></span>
         <b>University of Calcutta</b><span>Ph.D. &middot; 2020&ndash;25</span>
       </div>
       <div class="af">
-        <span class="lg"><img src="logos/vidyamandira.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;RKMV&lt;/span&gt;'"></span>
+        <span class="lg"><img src="logos/RKMV.jpg" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;RKMV&lt;/span&gt;'"></span>
         <b>RKM Vidyamandira</b><span>Doctoral research</span>
       </div>
       <div class="af">
         <span class="lg"><img src="logos/iitkgp.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;IIT&lt;/span&gt;'"></span>
         <b>IIT Kharagpur</b><span>M.Tech. &middot; 2017&ndash;19</span>
-      </div>
-      <div class="af">
-        <span class="lg"><img src="logos/serb.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;SERB&lt;/span&gt;'"></span>
-        <b>SERB, Govt. of India</b><span>Overseas Fellowship</span>
       </div>
     </div>
   </div>
@@ -426,7 +428,7 @@ em.j{font-style:italic}
       <div class="nrow"><span class="nd">2026</span><p>Invited review on <b>emerging 2D materials for green ammonia electrosynthesis</b> published in <em>ChemSusChem</em>.</p></div>
       <div class="nrow"><span class="nd">2026</span><p>Work on local-field-assisted nitrate reduction using Ni(TCNQ)<sub>2</sub> nanostructures published in <em>Advanced Functional Materials</em>.</p></div>
       <div class="nrow"><span class="nd">2025</span><p>Joined the <b>University of Toronto</b> as a Postdoctoral Fellow in Materials Science &amp; Engineering with Prof. Chandra Veer Singh.</p></div>
-      <div class="nrow"><span class="nd">2025</span><p>Presented catalyst screening for electrochemical urea synthesis at the <b>Canadian Chemistry and Chemical Engineering Conference</b>, October 2025.</p></div>
+      <div class="nrow"><span class="nd">2025</span><p>Attended <b>SCGCh / CSChE 2025</b> in MontrÃ©al, 5&ndash;7 October &mdash; &ldquo;Chemical engineering in an AI world: a pioneer of sustainability&rdquo;.</p></div>
       <div class="nrow"><span class="nd">2025</span><p>Morphology-dependent N<sub>2</sub> reduction on Cu<sub>2</sub>O published in <em>Small</em>.</p></div>
       <div class="nrow"><span class="nd">2024</span><p>Named a <b>finalist for the Best Paper Award</b> in Carbon Capture and Utilization at the international conference held at JNCASR.</p></div>
       <div class="nrow"><span class="nd">2024</span><p>Selective nitrogen oxidation to nitric acid published in <em>Advanced Functional Materials</em>.</p></div>
@@ -451,6 +453,9 @@ em.j{font-style:italic}
       <p class="lede" style="margin-bottom:16px">Ammonia, urea and nitric acid underpin the global nitrogen economy, yet their manufacture consumes roughly 2% of world energy and emits over 1% of anthropogenic CO<sub>2</sub>.</p>
       <p>Replacing that high-temperature chemistry with ambient, renewable-electricity-driven synthesis is limited not by thermodynamics but by <b>selectivity</b>: the desired N&ndash;H, C&ndash;N and N&ndash;O bond-forming steps must outcompete a kinetically trivial hydrogen evolution reaction.</p>
       <p>My programme makes each of the four governing variables independently computable, independently measurable, and therefore independently designable &mdash; connecting density functional theory, molecular dynamics, machine-learned interatomic potentials and multiphysics modelling with catalyst synthesis and electrochemical measurement.</p>
+      <div class="tags" style="margin-top:22px">
+        <span class="tag">Computational materials science</span><span class="tag">Density functional theory</span><span class="tag">Molecular dynamics</span><span class="tag">Multiscale modelling</span><span class="tag">Electrocatalysis</span><span class="tag">Electrochemical reaction engineering</span><span class="tag">CO<sub>2</sub> capture &amp; conversion</span><span class="tag">Green ammonia, urea &amp; nitric acid</span><span class="tag">Two-dimensional materials</span><span class="tag">ML-assisted catalyst discovery</span>
+      </div>
     </div>
 
     <div class="sh rv" style="margin-bottom:22px">
@@ -730,8 +735,10 @@ em.j{font-style:italic}
     <p>I am particularly interested in collaborations spanning operando spectroscopy, macrocycle and coordination-complex synthesis, functional nanomaterials, molecular simulation and uncertainty-aware machine learning.</p>
     <div class="clist">
       <a href="mailto:souravpaul.paul3@gmail.com"><span class="mono">Email</span><b>souravpaul.paul3@gmail.com</b></a>
-      <!-- TODO: replace # with your Google Scholar URL -->
-      <a href="#"><span class="mono">Google Scholar</span><b>Sourav Paul</b></a>
+      <a href="https://scholar.google.ca/citations?user=nSrFnmMAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="mono">Google Scholar &nearr;</span><b>Dr. Sourav Paul</b></a>
+      <a href="https://orcid.org/0000-0002-6215-8183" target="_blank" rel="noopener"><span class="mono">ORCID &nearr;</span><b>0000-0002-6215-8183</b></a>
+      <a href="Dr_Sourav_Paul_CV.pdf" target="_blank" rel="noopener"><span class="mono">Curriculum Vitae</span><b>Download PDF</b></a>
+      <div><span class="mono">Department</span><b>Materials Science &amp; Engineering, University of Toronto</b></div>
       <div><span class="mono">Location</span><b>Toronto, Ontario, Canada</b></div>
     </div>
     <div class="refs">
@@ -854,13 +861,16 @@ em.j{font-style:italic}
     {src:"images/02-teaching-cohort.jpg", g:"teaching", tag:"Teaching Â· University of Toronto",
      t:"The full teaching cohort",
      s:"Chemical engineering undergraduates at the end of the unit operations term."},
-    {src:"images/03-csche-2025-a.jpg", g:"conf", tag:"CSChE 2025",
+    {src:"images/14-csche-2025-c.jpg", g:"conf", tag:"CSChE 2025 Â· MontrÃ©al",
+     t:"Chemical engineering in an AI world",
+     s:"SCGCh / CSChE 2025, 5â€“7 October â€” the year's theme was AI as a pioneer of sustainability."},
+    {src:"images/03-csche-2025-a.jpg", g:"conf", tag:"CSChE 2025 Â· MontrÃ©al",
      t:"Canadian Chemistry and Chemical Engineering Conference",
      s:"Chemical Institute of Canada."},
-    {src:"images/04-csche-2025-b.jpg", g:"conf", tag:"CSChE 2025 Â· 5â€“7 October",
-     t:"SCGCh / CSChE 2025",
-     s:"Hosted with the Canadian Journal of Chemical Engineering."},
-    {src:"images/05-csche-talk.jpg", g:"conf", tag:"CSChE Â· Invited talk",
+    {src:"images/04-csche-2025-b.jpg", g:"conf", tag:"CSChE 2025 Â· MontrÃ©al",
+     t:"Sponsors and the Canadian Journal of Chemical Engineering",
+     s:"With the University of Toronto among the silver sponsors."},
+    {src:"images/05-csche-2026.jpg", g:"conf", tag:"CSChE 2026 Â· Invited talk",
      t:"Screening methodology for electrochemical urea synthesis",
      s:"The descriptor funnel â€” from thermodynamic and aggregation stability, through adsorption and activity, to a selected catalyst."},
     {src:"images/06-polanyi.jpg", g:"conf", tag:"CSChE 2026",
