@@ -1,0 +1,874 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sourav Paul, PhD - Postdoctoral Fellow, University of Toronto. Electrocatalysis, the electrified interface, and multiscale computational chemistry for carbon-nitrogen manufacturing.">
+<meta name="author" content="Sourav Paul">
+<meta property="og:title" content="Sourav Paul, Ph.D.">
+<meta property="og:description" content="Electrocatalysis and the electrified interface - DFT, machine-learned potentials, and electrochemical synthesis of ammonia, urea and nitric acid.">
+<meta property="og:type" content="website">
+</head>
+<body><title>Sourav Paul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#F5F7FB; --paper-2:#EAEEF7; --surface:#FFFFFF;
+  --ink:#0E1A2B; --ink-2:#46566E; --ink-3:#7E8CA3;
+  --rule:#DDE4F0; --rule-2:#C3CEE2;
+  --blue:#16357E; --blue-2:#2A5BC7; --blue-soft:#E5EBF8;
+  --copper:#A85A20; --copper-soft:#F6EBE1;
+  --d:"Newsreader",Georgia,"Times New Roman",serif;
+  --f:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --m:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --pad:clamp(18px,4.5vw,56px); --max:1120px;
+  --ez:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;font-family:var(--d);font-weight:500;line-height:1.12;letter-spacing:-.018em;text-wrap:balance}
+p{margin:0} a{color:inherit;text-decoration:none} button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.mono{font-family:var(--m);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:500}
+em.j{font-style:italic}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:80;background:rgba(245,247,251,.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .35s var(--ez)}
+.nav.stuck{border-bottom-color:var(--rule)}
+.nav-in{display:flex;align-items:center;gap:22px;height:60px}
+.brand{font-family:var(--d);font-size:19px;font-weight:600;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.brand i{width:9px;height:9px;background:var(--blue);border-radius:50%;display:block;flex:0 0 auto}
+.nav-links{display:flex;gap:20px;margin-left:auto}
+.nav-links a{font-size:14px;color:var(--ink-2);position:relative;padding:3px 0;transition:color .25s var(--ez)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ez)}
+.nav-links a:hover{color:var(--ink)} .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:3px;font-size:13.5px;font-weight:500;position:relative;overflow:hidden;transition:transform .3s var(--ez),border-color .3s var(--ez)}
+.btn>span{position:relative;z-index:1;display:flex;align-items:center;gap:8px;transition:color .3s var(--ez)}
+.btn svg{width:13px;height:13px;flex:0 0 auto}
+.btn-p{background:var(--blue);color:#fff}
+.btn-p::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .42s var(--ez)}
+.btn-p:hover::before{transform:translateY(0)} .btn-p:hover{transform:translateY(-1px)}
+.btn-g{border:1px solid var(--rule-2);color:var(--ink)}
+.btn-g::before{content:"";position:absolute;inset:0;background:var(--surface);transform:translateY(101%);transition:transform .42s var(--ez)}
+.btn-g:hover::before{transform:translateY(0)} .btn-g:hover{border-color:var(--blue);transform:translateY(-1px)}
+.btn-s{height:34px;padding:0 12px;font-size:13px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ez),transform .8s var(--ez)}
+.rv.in{opacity:1;transform:none}
+
+/* SCALE RULE divider */
+.scalerule{display:flex;align-items:flex-end;gap:0;height:34px;border-bottom:1px solid var(--rule);margin:0}
+.scalerule div{flex:1;border-left:1px solid var(--rule);height:9px;position:relative}
+.scalerule div:nth-child(4n+1){height:19px}
+.scalerule div:nth-child(4n+1)::after{content:attr(data-l);position:absolute;left:5px;bottom:100%;margin-bottom:4px;font-family:var(--m);font-size:9px;letter-spacing:.1em;color:var(--ink-3);white-space:nowrap}
+
+/* HERO */
+.hero{padding:clamp(44px,7vw,84px) 0 clamp(28px,4vw,44px)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--ink-2);margin-bottom:22px}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--blue);display:block}
+.hero h1{font-size:clamp(44px,8vw,92px);letter-spacing:-.032em;font-weight:500;line-height:.98}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .ln>i{display:block;font-style:normal;transform:translateY(104%);animation:rise .95s var(--ez) forwards}
+.hero h1 .ln:nth-child(2)>i{animation-delay:.1s}
+@keyframes rise{to{transform:translateY(0)}}
+.role{font-family:var(--f);font-size:clamp(15px,1.6vw,17.5px);color:var(--ink-2);margin-top:20px;max-width:56ch;opacity:0;animation:fu .9s var(--ez) .34s forwards}
+.role b{color:var(--ink);font-weight:600}
+.thesis{font-family:var(--d);font-size:clamp(18px,2.2vw,25px);line-height:1.42;max-width:44ch;margin-top:26px;letter-spacing:-.012em;opacity:0;animation:fu .9s var(--ez) .44s forwards}
+.thesis u{text-decoration:none;background:linear-gradient(to top,var(--blue-soft) 0,var(--blue-soft) 44%,transparent 44%);padding:0 .06em}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hcta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;opacity:0;animation:fu .9s var(--ez) .54s forwards}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:clamp(30px,4.5vw,48px);opacity:0;animation:fu 1s var(--ez) .64s forwards}
+.metric{background:var(--surface);padding:20px 18px;transition:background .35s var(--ez)}
+.metric:hover{background:var(--blue-soft)}
+.metric b{font-family:var(--d);font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:-.035em;display:block;line-height:1;font-variant-numeric:tabular-nums}
+.metric span{font-family:var(--m);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);display:block;margin-top:9px}
+
+/* SECTIONS */
+.sec{padding:clamp(56px,8vw,104px) 0}
+.sec-w{background:var(--surface)}
+.sh{display:flex;flex-direction:column;gap:13px;margin-bottom:clamp(28px,4vw,46px)}
+.sh .mono{color:var(--blue)}
+.sh h2{font-size:clamp(28px,4.2vw,46px);max-width:21ch;letter-spacing:-.026em}
+.sh p{color:var(--ink-2);max-width:64ch;font-size:16.5px}
+
+.lede{font-family:var(--d);font-size:clamp(18px,2.1vw,23px);line-height:1.5;max-width:60ch;letter-spacing:-.012em;color:var(--ink)}
+.prose p{color:var(--ink-2);max-width:66ch;font-size:16px}
+.prose p+p{margin-top:14px}
+
+/* MULTISCALE LOOP */
+.loop{border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden}
+.sec-w .loop{background:var(--paper)}
+.loop-top{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule)}
+.lay{background:var(--surface);padding:18px 16px;text-align:left;transition:background .3s var(--ez);position:relative;display:flex;flex-direction:column;gap:7px;min-height:118px}
+.sec-w .lay{background:var(--paper)}
+.lay:hover{background:var(--blue-soft)}
+.lay[aria-selected="true"]{background:var(--blue);color:#fff}
+.lay .sc{font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);transition:color .3s var(--ez)}
+.lay[aria-selected="true"] .sc{color:rgba(255,255,255,.66)}
+.lay h3{font-family:var(--d);font-size:17.5px;letter-spacing:-.018em;font-weight:500}
+.lay p{font-size:12.5px;color:var(--ink-2);line-height:1.45;transition:color .3s var(--ez)}
+.lay[aria-selected="true"] p{color:rgba(255,255,255,.82)}
+.lay::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ez)}
+.lay:hover::after{transform:scaleX(1)}
+.lay[aria-selected="true"]::after{display:none}
+.loop-detail{padding:clamp(18px,2.6vw,28px);border-top:1px solid var(--rule);background:var(--paper-2);display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+.sec-w .loop-detail{background:var(--surface)}
+.loop-detail h4{font-family:var(--d);font-size:19px;letter-spacing:-.018em;margin-bottom:7px}
+.loop-detail p{font-size:14.5px;color:var(--ink-2);max-width:62ch}
+.passes{font-family:var(--m);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);border:1px solid var(--rule-2);border-radius:3px;padding:10px 13px;background:var(--surface);white-space:nowrap;text-align:center;line-height:1.7}
+.sec-w .passes{background:var(--paper)}
+.loop-anchor{border-top:1px solid var(--rule);padding:15px clamp(18px,2.6vw,28px);display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--surface)}
+.sec-w .loop-anchor{background:var(--paper)}
+.loop-anchor .mono{color:var(--copper);margin-right:6px}
+.chipx{font-family:var(--m);font-size:10px;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--rule-2);border-radius:2px;padding:5px 9px;color:var(--ink-2);background:var(--paper)}
+.sec-w .chipx{background:var(--surface)}
+
+/* THRUSTS */
+.thrusts{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.th{background:var(--surface);padding:clamp(20px,3vw,30px);display:grid;grid-template-columns:56px 1fr;gap:clamp(14px,2.4vw,28px);transition:background .35s var(--ez)}
+.sec-w .th{background:var(--paper)}
+.th:hover{background:var(--blue-soft)}
+.th .n{font-family:var(--d);font-size:34px;color:var(--rule-2);line-height:.9;font-weight:500;transition:color .35s var(--ez)}
+.th:hover .n{color:var(--blue)}
+.th h3{font-size:clamp(20px,2.3vw,25px);letter-spacing:-.022em;margin-bottom:9px}
+.th .hyp{font-size:14.5px;color:var(--ink);background:var(--paper-2);border-left:2px solid var(--blue);padding:10px 14px;border-radius:0 3px 3px 0;margin-bottom:12px;max-width:70ch}
+.sec-w .th .hyp{background:var(--surface)}
+.th .hyp b{font-family:var(--m);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:4px}
+.th>div>p{font-size:15px;color:var(--ink-2);max-width:70ch}
+.th .del{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
+
+/* FOUNDATION */
+.found{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.fd{background:var(--surface);padding:clamp(20px,2.8vw,28px);transition:background .35s var(--ez)}
+.sec-w .fd{background:var(--paper)}
+.fd:hover{background:var(--blue-soft)}
+.fd h3{font-size:19px;letter-spacing:-.02em;margin-bottom:9px}
+.fd p{font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.cites{display:flex;flex-direction:column;gap:5px}
+.cites span{font-family:var(--m);font-size:11px;color:var(--ink-3);letter-spacing:-.01em}
+.cites span b{color:var(--blue);font-weight:500}
+
+/* PUBLICATIONS */
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.fbtn{font-family:var(--m);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rule-2);border-radius:2px;padding:8px 12px;color:var(--ink-2);background:var(--surface);transition:all .28s var(--ez)}
+.sec-w .fbtn{background:var(--paper)}
+.fbtn:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.fbtn[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fbtn em{font-style:normal;opacity:.6;margin-left:5px}
+.pubs{border-top:1px solid var(--rule)}
+.pub{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--rule);align-items:start;transition:background .25s var(--ez),padding-left .25s var(--ez)}
+.pub:hover{background:var(--blue-soft);padding-left:8px}
+.pub .idx{font-family:var(--m);font-size:11px;color:var(--ink-3);padding-top:4px;font-variant-numeric:tabular-nums}
+.pub .t{font-size:15.5px;line-height:1.45;color:var(--ink)}
+.pub .a{font-size:13.5px;color:var(--ink-2);margin-top:4px}
+.pub .a b{color:var(--ink);font-weight:600}
+.pub .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:7px}
+.jn{font-family:var(--d);font-style:italic;font-size:14px;color:var(--blue)}
+.yr{font-family:var(--m);font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.doi{font-family:var(--m);font-size:10.5px;color:var(--ink-3);border-bottom:1px solid var(--rule-2);transition:color .25s var(--ez),border-color .25s var(--ez)}
+.doi:hover{color:var(--blue);border-color:var(--blue)}
+.mk{font-family:var(--m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:2px}
+.mk-1{background:var(--blue);color:#fff}
+.mk-2{background:var(--blue-soft);color:var(--blue)}
+.mk-r{background:var(--copper-soft);color:var(--copper)}
+.empty{padding:26px 0;color:var(--ink-3);font-size:15px}
+
+/* PATENTS */
+.pats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:18px}
+.pat{background:var(--surface);padding:18px 20px;transition:background .3s var(--ez)}
+.sec-w .pat{background:var(--paper)}
+.pat:hover{background:var(--copper-soft)}
+.pat .mono{color:var(--copper);display:block;margin-bottom:7px}
+.pat p{font-size:14.5px;color:var(--ink)}
+.pat span{font-family:var(--m);font-size:11px;color:var(--ink-3);display:block;margin-top:5px}
+
+/* TIMELINE */
+.tl{border-top:1px solid var(--rule)}
+.tli{display:grid;grid-template-columns:132px 1fr;gap:22px;padding:20px 0;border-bottom:1px solid var(--rule);transition:background .25s var(--ez),padding-left .25s var(--ez)}
+.tli:hover{background:var(--blue-soft);padding-left:8px}
+.tli .when{font-family:var(--m);font-size:11.5px;color:var(--blue);padding-top:4px;font-variant-numeric:tabular-nums}
+.tli h3{font-size:19px;letter-spacing:-.02em;margin-bottom:4px}
+.tli .where{font-size:14.5px;color:var(--ink-2);margin-bottom:7px}
+.tli .where b{color:var(--ink);font-weight:600}
+.tli p{font-size:14px;color:var(--ink-2);max-width:72ch}
+
+/* TEACHING */
+.tsplit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px);align-items:start}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{text-align:left;font-family:var(--m);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+.tbl td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+.tbl td:first-child{color:var(--ink);font-weight:500;width:46%}
+.tbl tr:hover td{background:var(--blue-soft)}
+.lvl{font-family:var(--m);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--blue);white-space:nowrap}
+.elective{border:1px solid var(--blue);border-radius:3px;padding:22px;background:var(--blue-soft);margin-top:20px}
+.elective .mono{color:var(--blue);display:block;margin-bottom:9px}
+.elective h3{font-size:21px;letter-spacing:-.022em;margin-bottom:9px}
+.elective p{font-size:14.5px;color:var(--ink-2)}
+
+/* AWARDS + SKILLS */
+.awards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.aw{background:var(--surface);padding:16px 20px;display:grid;grid-template-columns:52px 1fr;gap:14px;transition:background .3s var(--ez)}
+.sec-w .aw{background:var(--paper)}
+.aw:hover{background:var(--blue-soft)}
+.aw .y{font-family:var(--m);font-size:11.5px;color:var(--blue);padding-top:3px}
+.aw h4{font-family:var(--f);font-size:15px;font-weight:600;letter-spacing:0;margin-bottom:2px}
+.aw p{font-size:13.5px;color:var(--ink-2)}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sk{border:1px solid var(--rule);border-radius:3px;padding:20px;background:var(--surface);transition:border-color .3s var(--ez)}
+.sec-w .sk{background:var(--paper)}
+.sk:hover{border-color:var(--blue)}
+.sk h3{font-size:17px;letter-spacing:-.018em;margin-bottom:12px}
+.sk .tagrow{display:flex;flex-wrap:wrap;gap:6px}
+.sk .tagrow span{font-family:var(--m);font-size:10.5px;color:var(--ink-2);border:1px solid var(--rule-2);border-radius:2px;padding:4px 8px;background:var(--paper);transition:all .25s var(--ez)}
+.sec-w .sk .tagrow span{background:var(--surface)}
+.sk .tagrow span:hover{border-color:var(--blue);color:var(--blue)}
+
+/* GALLERY */
+.gal{columns:3;column-gap:14px}
+.gitem{break-inside:avoid;margin:0 0 14px;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--surface);position:relative;transition:transform .35s var(--ez),border-color .35s var(--ez),box-shadow .35s var(--ez);display:block;width:100%;text-align:left;padding:0;cursor:zoom-in}
+.sec-w .gitem{background:var(--paper)}
+.gitem:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 18px 40px -30px rgba(14,26,43,.55)}
+.gitem img{width:100%;display:block;height:auto;background:var(--paper-2)}
+.gitem .ph{aspect-ratio:4/3;display:grid;place-items:center;gap:8px;background:var(--paper-2);color:var(--ink-3);padding:20px;text-align:center}
+.sec-w .gitem .ph{background:var(--surface)}
+.gitem .ph svg{opacity:.45}
+.gitem .ph span{font-family:var(--m);font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.gitem .cap{padding:12px 14px;border-top:1px solid var(--rule)}
+.gitem .cap .tagline{font-family:var(--m);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:5px}
+.gitem .cap p{font-size:13.5px;color:var(--ink);line-height:1.45}
+.gitem .cap small{display:block;font-size:12px;color:var(--ink-2);margin-top:4px;line-height:1.45}
+.gitem.vid{cursor:pointer}
+.gitem.vid .ph{background:var(--blue);color:#fff;aspect-ratio:16/10}
+.gitem.vid .ph span{color:rgba(255,255,255,.8)}
+.gitem.vid .ph svg{opacity:1}
+
+.lb{position:fixed;inset:0;z-index:200;background:rgba(8,16,30,.95);display:none;grid-template-rows:1fr auto;padding:clamp(14px,3vw,40px);gap:16px}
+.lb.on{display:grid}
+.lb-stage{display:grid;place-items:center;min-height:0}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:3px;display:block}
+.lb-cap{text-align:center;color:#fff;max-width:70ch;margin:0 auto}
+.lb-cap .tagline{font-family:var(--m);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--blue-2);display:block;margin-bottom:7px}
+.lb-cap p{font-size:16px;font-weight:500}
+.lb-cap small{display:block;font-size:13.5px;color:rgba(245,247,251,.62);margin-top:5px}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff;display:grid;place-items:center;transition:background .25s var(--ez)}
+.lb-btn:hover{background:var(--blue)}
+.lb-prev{left:clamp(8px,2vw,24px)} .lb-next{right:clamp(8px,2vw,24px)}
+.lb-close{position:absolute;top:clamp(10px,2vw,22px);right:clamp(10px,2vw,22px);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff;display:grid;place-items:center;transition:background .25s var(--ez);z-index:2}
+.lb-close:hover{background:var(--blue)}
+.lb-count{position:absolute;top:clamp(14px,2vw,26px);left:clamp(14px,2vw,26px);font-family:var(--m);font-size:11px;letter-spacing:.1em;color:rgba(245,247,251,.55)}
+
+/* CONTACT */
+.end{padding:clamp(56px,8vw,104px) 0;background:var(--ink);color:var(--paper)}
+.end h2{font-size:clamp(30px,5vw,56px);letter-spacing:-.03em;max-width:17ch;color:#fff}
+.end p{color:rgba(245,247,251,.74);font-size:17px;max-width:56ch;margin-top:18px}
+.end .mono{color:var(--blue-2);display:block;margin-bottom:18px}
+.clist{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;margin-top:32px}
+.clist a,.clist div{background:var(--ink);padding:18px 20px;display:flex;flex-direction:column;gap:5px;transition:background .3s var(--ez)}
+.clist a:hover{background:var(--blue)}
+.clist .mono{color:rgba(245,247,251,.5);margin:0}
+.clist b{font-size:15px;font-weight:500;color:#fff;word-break:break-word}
+.refs{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ref{border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
+.ref b{display:block;font-size:14.5px;font-weight:600;color:#fff;margin-bottom:3px}
+.ref span{font-size:13px;color:rgba(245,247,251,.6);display:block}
+.foot{background:var(--ink);color:rgba(245,247,251,.5);padding:0 0 40px;font-size:13px}
+.foot-in{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.14);padding-top:22px}
+
+@media (max-width:900px){
+  .gal{columns:2}
+  .metrics{grid-template-columns:1fr 1fr}
+  .loop-top{grid-template-columns:1fr 1fr}
+  .loop-detail{grid-template-columns:1fr}
+  .found,.pats,.awards,.skills,.tsplit{grid-template-columns:1fr}
+  .clist,.refs{grid-template-columns:1fr 1fr}
+  .tli{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:640px){
+  .nav-links{display:none}
+  .gal{columns:1}
+  .loop-top{grid-template-columns:1fr}
+  .th{grid-template-columns:1fr;gap:8px}
+  .clist,.refs{grid-template-columns:1fr}
+  .pub{grid-template-columns:1fr;gap:4px}
+  .pub .idx{padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  .rv{opacity:1;transform:none} .hero h1 .ln>i{transform:none}
+  .role,.thesis,.hcta,.metrics{opacity:1}
+}
+</style>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><i></i> Sourav Paul</a>
+    <div class="nav-links">
+      <a href="#research">Research</a><a href="#loop">Method</a><a href="#pubs">Publications</a><a href="#experience">Experience</a><a href="#teaching">Teaching</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+    </div>
+    <!-- TODO: replace # with your CV PDF link -->
+    <a class="btn btn-p btn-s" href="#"><span>Curriculum Vitae</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow mono"><i></i> Postdoctoral Fellow &middot; University of Toronto</p>
+    <h1><span class="ln"><i>Sourav Paul,</i></span><span class="ln"><i>Ph.D.</i></span></h1>
+    <p class="role">Computational and experimental chemist working on <b>electrocatalysis and the electrified interface</b>. Department of Materials Science &amp; Engineering, University of Toronto, with Prof. Chandra Veer Singh.</p>
+    <p class="thesis">Selectivity at an electrified interface is not a property of the catalyst alone &mdash; it is the <u>coupled state of four variables</u>: the coordination environment of the active metal centre, the local electric field, the solvation and ion structure of the double layer, and interfacial mass transport.</p>
+    <div class="hcta">
+      <!-- TODO: replace # with your Google Scholar and ORCID URLs -->
+      <a class="btn btn-p" href="mailto:souravpaul.paul3@gmail.com"><span>
+        <svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 4.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Email</span></a>
+      <a class="btn btn-g" href="#"><span>Google Scholar</span></a>
+      <a class="btn btn-g" href="#"><span>ORCID</span></a>
+      <a class="btn btn-g" href="#pubs"><span>Publications</span></a>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><b>21</b><span>Peer-reviewed articles</span></div>
+      <div class="metric"><b>8</b><span>As first author</span></div>
+      <div class="metric"><b>3</b><span>Invited reviews</span></div>
+      <div class="metric"><b>5</b><span>Patent applications</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="scalerule" aria-hidden="true">
+  <div data-l="Ã… Â· electrons"></div><div></div><div></div><div></div>
+  <div data-l="nm Â· active site"></div><div></div><div></div><div></div>
+  <div data-l="Âµm Â· interface"></div><div></div><div></div><div></div>
+  <div data-l="cm Â· reactor"></div><div></div><div></div><div></div>
+</div></div>
+
+<section class="sec" id="research">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">Research</span>
+      <h2>Electrified interfaces by design.</h2>
+    </div>
+    <div class="prose rv" style="margin-bottom:clamp(30px,4vw,46px)">
+      <p class="lede" style="margin-bottom:16px">Ammonia, urea and nitric acid underpin the global nitrogen economy, yet their manufacture consumes roughly 2% of world energy and emits over 1% of anthropogenic CO<sub>2</sub>.</p>
+      <p>Replacing that high-temperature chemistry with ambient, renewable-electricity-driven synthesis is limited not by thermodynamics but by <b>selectivity</b>: the desired N&ndash;H, C&ndash;N and N&ndash;O bond-forming steps must outcompete a kinetically trivial hydrogen evolution reaction.</p>
+      <p>My programme makes each of the four governing variables independently computable, independently measurable, and therefore independently designable &mdash; connecting density functional theory, molecular dynamics, machine-learned interatomic potentials and multiphysics modelling with catalyst synthesis and electrochemical measurement.</p>
+    </div>
+
+    <div class="sh rv" style="margin-bottom:22px">
+      <span class="mono">Foundation &middot; what the published work established</span>
+    </div>
+    <div class="found rv">
+      <div class="fd">
+        <h3>Coordination control of molecular active sites</h3>
+        <p>Metal phthalocyanines gave a chemically exact platform: a single M&ndash;N<sub>4</sub> centre whose ligand field and electronic structure can be tuned deliberately. A scalable route to hollow cobalt phthalocyanine nanotubes reduces N<sub>2</sub> to NH<sub>3</sub> at room temperature; 1D/2D coupling with carbon nitride then redirects selectivity across both NO<sub>3</sub><sup>&minus;</sup> and N<sub>2</sub> reduction.</p>
+        <div class="cites">
+          <span><b>ACS Nano</b> 2021, 15, 5230</span>
+          <span><b>ACS Sustain. Chem. Eng.</b> 2023, 11, 6191</span>
+          <span><b>ACS Catalysis</b> 2023, 13, 13516</span>
+        </div>
+      </div>
+      <div class="fd">
+        <h3>Cooperative dual sites for C&ndash;N coupling</h3>
+        <p>Electrochemical urea synthesis is the hardest selectivity problem in this space &mdash; simultaneous activation of two feedstocks, a C&ndash;N bond formed between short-lived intermediates, and suppression of three competing pathways. Dual-metal-site-mediated coupling was demonstrated and the site-selective co-reduction mechanism resolved on copper phthalocyanine nanotubes.</p>
+        <div class="cites">
+          <span><b>J. Mater. Chem. A</b> 2023, 11, 13249</span>
+          <span><b>Adv. Funct. Mater.</b> 2022, 32, 2200882</span>
+          <span><b>Mater. Chem. Front.</b> 2023, 7, 3820 &mdash; invited review</span>
+        </div>
+      </div>
+      <div class="fd">
+        <h3>The oxidative branch, and field control</h3>
+        <p>Selective N<sub>2</sub> oxidation to nitric acid was established by synergising cobalt phthalocyanine with a carbon nitride surface &mdash; a rare demonstration that one molecular platform can be driven oxidatively. Two later studies made the <b>local electric field an explicit, quantitative design variable</b>, reconciling COMSOL field maps, DFT energetics and electrochemical measurement on the same geometry.</p>
+        <div class="cites">
+          <span><b>Adv. Funct. Mater.</b> 2024, 34, 2408314</span>
+          <span><b>Small</b> 2025, 2505121</span>
+          <span><b>Adv. Funct. Mater.</b> 2026, e19797</span>
+        </div>
+      </div>
+      <div class="fd">
+        <h3>Multiscale and data-driven methodology</h3>
+        <p>Current postdoctoral work builds connected DFT &rarr; MLIP molecular dynamics &rarr; continuum multiphysics &rarr; uncertainty-aware Bayesian optimisation workflows for symmetry-broken 2D semiconductors, where an intrinsic out-of-plane dipole governs charge separation, defect behaviour and interfacial reactivity.</p>
+        <div class="cites">
+          <span><b>ChemSusChem</b> 2026, 19, e202502111 &mdash; invited review</span>
+          <span>MACE / GRACE-class MLIPs &middot; active learning</span>
+          <span>Multi-objective acquisition under small, expensive data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-w" id="loop">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">Method</span>
+      <h2>One closed multiscale loop.</h2>
+      <p>Each layer answers a distinct chemical question and passes a physically meaningful quantity to the next. Experiment is not a final validation step but a continuous source of retraining data. Select a layer to see what it settles.</p>
+    </div>
+    <div class="loop rv">
+      <div class="loop-top" role="tablist" aria-label="Multiscale method layers">
+        <button class="lay" role="tab" aria-selected="true" data-k="dft">
+          <span class="sc">Ã… &middot; electrons</span>
+          <h3>DFT / DFT+U</h3>
+          <p>Electronic descriptors, ligand field, adsorption, reaction networks</p>
+        </button>
+        <button class="lay" role="tab" aria-selected="false" data-k="mlip">
+          <span class="sc">nm &middot; dynamics</span>
+          <h3>MLIP molecular dynamics</h3>
+          <p>Double layer, cations, interfacial water, defects, stability under operation</p>
+        </button>
+        <button class="lay" role="tab" aria-selected="false" data-k="micro">
+          <span class="sc">Âµm &middot; transport</span>
+          <h3>Microkinetics &amp; transport</h3>
+          <p>Local electric field, pH, transport, current density, predicted selectivity</p>
+        </button>
+        <button class="lay" role="tab" aria-selected="false" data-k="bo">
+          <span class="sc">Decision layer</span>
+          <h3>Bayesian optimisation</h3>
+          <p>Uncertainty-aware, multi-objective, active learning: what to try next</p>
+        </button>
+      </div>
+      <div class="loop-detail">
+        <div>
+          <h4 id="ld-t"></h4>
+          <p id="ld-p"></p>
+        </div>
+        <span class="passes" id="ld-x"></span>
+      </div>
+      <div class="loop-anchor">
+        <span class="mono">Experimental anchor</span>
+        <span class="chipx">Macrocycle &amp; 2D synthesis</span>
+        <span class="chipx">Electrochemistry &amp; impedance</span>
+        <span class="chipx">Operando &amp; X-ray spectroscopy</span>
+        <span class="chipx"><sup>15</sup>N isotope validation</span>
+        <span class="chipx">Flow cells</span>
+      </div>
+    </div>
+
+    <div class="sh rv" style="margin-top:clamp(44px,6vw,72px);margin-bottom:22px">
+      <span class="mono">The programme</span>
+      <h2>Three thrusts on one integrating platform.</h2>
+    </div>
+    <div class="thrusts rv">
+      <div class="th">
+        <span class="n">01</span>
+        <div>
+          <h3>Coordination- and defect-resolved design of cooperative active sites</h3>
+          <p class="hyp"><b>Hypothesis</b>C&ndash;N coupling and multi-electron N-reduction require two chemically distinct, spatially adjacent sites whose binding energies are anti-correlated &mdash; a condition conventional scaling relations forbid on a single-metal surface.</p>
+          <p>Heteronuclear and axially-modified M&ndash;N<sub>4</sub>/M&ndash;N<sub>x</sub> macrocycles anchored on 2D supports, dual-site alloys and high-entropy surfaces, and defect-engineered heterostructures. Periodic DFT/DFT+U with explicit solvation and constant-potential corrections resolves reaction networks, potential-determining steps, dissolution and segregation risk, and HER competition together &mdash; not as a ranking, but to extract interpretable descriptors a synthetic chemist can act on.</p>
+          <div class="del"><span class="chipx">Validated reaction networks</span><span class="chipx">Descriptor design rules</span><span class="chipx">Open catalyst dataset</span></div>
+        </div>
+      </div>
+      <div class="th">
+        <span class="n">02</span>
+        <div>
+          <h3>The electrified interface made explicit</h3>
+          <p class="hyp"><b>Hypothesis</b>The largest unexploited selectivity lever is not the catalyst but the electrolyte.</p>
+          <p>Static adsorption energies cannot describe an interface in motion. This thrust follows solvent, cations, anions and intermediates directly using classical and <em class="j">ab initio</em> molecular dynamics, with MLIPs extending quantum-mechanical fidelity to the length and time scales the double layer actually requires &mdash; quantifying how cation identity and hydration, interfacial water orientation, local pH and hydrogen-bond networks set intermediate lifetimes and suppress HER.</p>
+          <div class="del"><span class="chipx">Interfacial design maps</span><span class="chipx">Electrolyte-selection protocol</span><span class="chipx">Atomistics &rarr; Faradaic efficiency</span></div>
+        </div>
+      </div>
+      <div class="th">
+        <span class="n">03</span>
+        <div>
+          <h3>Symmetry-broken 2D architectures with built-in electric fields</h3>
+          <p class="hyp"><b>Hypothesis</b>If an external field improves selectivity, a field built into the lattice should do so permanently.</p>
+          <p>Janus and otherwise asymmetric 2D chalcogenides, polar heterostructures and molecularly-functionalised 2D supports carry an intrinsic out-of-plane dipole that pre-polarises the interface, drives directional charge separation, and shifts adsorbate binding without additional overpotential. This unites both research lines &mdash; testing whether internal fields achieve what nanostructure geometry achieved externally in the Cu<sub>2</sub>O and Ni(TCNQ)<sub>2</sub> work.</p>
+          <div class="del"><span class="chipx">Dipole&ndash;activity relationships</span><span class="chipx">Hybrid molecular/2D catalysts</span><span class="chipx">Intellectual property</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="elective rv" style="margin-top:24px">
+      <span class="mono">Rigour and validation</span>
+      <h3>Built to resist the field&rsquo;s false-positive problem.</h3>
+      <p>Nitrogen electrocatalysis has a documented false-positive problem. Standard practice in my work: quantitative <sup>15</sup>N isotope labelling with NMR/MS confirmation, feed-gas purification, open-circuit and Ar-purged blanks, independent dual quantification by colorimetry and ion chromatography, and full reporting of yield-rate normalisation. Computationally: documented convergence, explicit uncertainty, version-controlled workflows and published input structures.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pubs">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">Publications</span>
+      <h2>21 peer-reviewed articles.</h2>
+      <p>Reverse chronological. Name in bold; first-author and invited-review articles are marked. Filter by role or by chemistry.</p>
+    </div>
+    <div class="filters rv" id="filters">
+      <button class="fbtn" aria-pressed="true" data-f="all">All <em id="c-all"></em></button>
+      <button class="fbtn" aria-pressed="false" data-f="first">First author <em id="c-first"></em></button>
+      <button class="fbtn" aria-pressed="false" data-f="review">Invited reviews <em id="c-review"></em></button>
+      <button class="fbtn" aria-pressed="false" data-f="ammonia">Ammonia <em id="c-ammonia"></em></button>
+      <button class="fbtn" aria-pressed="false" data-f="urea">Urea / C&ndash;N <em id="c-urea"></em></button>
+      <button class="fbtn" aria-pressed="false" data-f="nitric">Nitric acid <em id="c-nitric"></em></button>
+      <button class="fbtn" aria-pressed="false" data-f="other">Other materials <em id="c-other"></em></button>
+    </div>
+    <div class="pubs rv" id="publist"></div>
+
+    <div class="sh rv" style="margin-top:clamp(40px,5.5vw,64px);margin-bottom:0">
+      <span class="mono">Patents</span>
+      <h2>Five applications filed.</h2>
+    </div>
+    <div class="pats rv">
+      <div class="pat"><span class="mono">United States &middot; 2022</span><p>Process for the electrochemical synthesis of green urea</p><span>Application 17/846,753 &middot; co-inventor</span></div>
+      <div class="pat"><span class="mono">United States &middot; 2021</span><p>Process for the electrochemical synthesis of ammonia</p><span>Application filed 2021</span></div>
+      <div class="pat"><span class="mono">India &middot; 2021</span><p>Electrochemical synthesis of ammonia</p><span>202131029798</span></div>
+      <div class="pat"><span class="mono">India &middot; 2021</span><p>Electrochemical synthesis of green urea</p><span>202131027290</span></div>
+      <div class="pat"><span class="mono">India &middot; 2021</span><p>Electrochemical synthesis of nitric acid</p><span>202131029797</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-w" id="experience">
+  <div class="wrap">
+    <div class="sh rv"><span class="mono">Experience</span><h2>Positions and education.</h2></div>
+    <div class="tl rv">
+      <div class="tli"><span class="when">2025 &ndash; Present</span><div><h3>Postdoctoral Fellow</h3><p class="where"><b>University of Toronto</b> &middot; Materials Science &amp; Engineering &middot; Advisor: Prof. Chandra Veer Singh</p><p>Multiscale and machine-learning-driven modelling of two-dimensional semiconductors: high-throughput DFT, machine-learned interatomic potentials, COMSOL multiphysics, and uncertainty-aware multi-objective Bayesian optimisation.</p></div></div>
+      <div class="tli"><span class="when">2023 &ndash; 2024</span><div><h3>Overseas Visiting Doctoral Fellow</h3><p class="where"><b>University of Alberta</b> &middot; Chemical &amp; Materials Engineering &middot; Advisor: Prof. Samir H. Mushrif</p><p>SERB (Government of India) fellowship. Density functional theory and molecular dynamics of catalytic interfaces.</p></div></div>
+      <div class="tli"><span class="when">2020 &ndash; 2025</span><div><h3>Research Fellow &middot; Ph.D. in Applied Chemistry</h3><p class="where"><b>University of Calcutta</b>, at Ramakrishna Mission Vidyamandira &middot; Advisor: Dr. Uttam Kumar Ghorai</p><p>Thesis: Electrochemical fixation of N<sub>2</sub> and CO<sub>2</sub> using cobalt phthalocyanine based catalysts. Electrocatalyst synthesis, electrochemical nitrogen and carbon fixation, and combined experimental&ndash;computational mechanistic study.</p></div></div>
+      <div class="tli"><span class="when">2017 &ndash; 2019</span><div><h3>M.Tech. in Rubber Technology</h3><p class="where"><b>Indian Institute of Technology Kharagpur</b> &middot; Advisor: Prof. Anil K. Bhowmick</p><p>Thesis: Evaluation of graphene as a multifunctional nanofiller in rubber compounds. Research with Birla Carbon on dispersion optimisation and tire-performance analysis.</p></div></div>
+      <div class="tli"><span class="when">2015 &ndash; 2017</span><div><h3>M.Sc. in Applied Chemistry</h3><p class="where"><b>University of Calcutta</b> &middot; Ramakrishna Mission Vidyamandira</p><p>Thesis: Development of copper phthalocyanine nanostructures by thermal evaporation &mdash; XPS, SEM, TEM, photoluminescence and cathodoluminescence.</p></div></div>
+      <div class="tli"><span class="when">2012 &ndash; 2015</span><div><h3>B.Sc. (Honours) in Industrial Chemistry</h3><p class="where"><b>University of Calcutta</b> &middot; Ramakrishna Mission Vidyamandira</p><p>Undergraduate research at Saha Institute of Nuclear Physics on bovine serum albumin interactions with gold nanoparticles; Indian Academy of Sciences Summer Research Fellow at INST Mohali (2016) on silicon quantum dots.</p></div></div>
+    </div>
+
+    <div class="sh rv" style="margin-top:clamp(40px,5.5vw,64px);margin-bottom:20px"><span class="mono">Honours</span><h2>Awards and recognition.</h2></div>
+    <div class="awards rv">
+      <div class="aw"><span class="y">2024</span><div><h4>Finalist, Best Paper Award</h4><p>Carbon Capture and Utilization &middot; International Conference, JNCASR</p></div></div>
+      <div class="aw"><span class="y">2024</span><div><h4>Certificate of Patent Award</h4><p>Patent development and commercial application &middot; Ramakrishna Mission Vidyamandira</p></div></div>
+      <div class="aw"><span class="y">2023</span><div><h4>Overseas Visiting Doctoral Fellowship</h4><p>SERB, Government of India &middot; competitive national fellowship</p></div></div>
+      <div class="aw"><span class="y">2023</span><div><h4>Best Poster Award</h4><p>Sustainable Functional Materials and Processes &middot; IIT Kharagpur</p></div></div>
+      <a class="aw" href="https://www.youtube.com/watch?v=p-5K89prdG0" target="_blank" rel="noopener"><span class="y">2023</span><div><h4>Emerging Scholar recognition &nearr;</h4><p>ACS Sustainable Chemistry &amp; Engineering &middot; watch the feature</p></div></a>
+      <div class="aw"><span class="y">2021</span><div><h4>Best Poster Award</h4><p>Chemical Science Symposium &middot; Royal Society of Chemistry</p></div></div>
+      <div class="aw"><span class="y">2021</span><div><h4>Acharya Prafulla Chandra Ray Research Excellence Award</h4><p>Indian Chemical Society</p></div></div>
+      <div class="aw"><span class="y">2017</span><div><h4>GATE All India Rank 63</h4><p>UGC Postgraduate Merit Scholarship &middot; second rank in University, Chemical Sciences</p></div></div>
+    </div>
+
+    <div class="sh rv" style="margin-top:clamp(40px,5.5vw,64px);margin-bottom:20px"><span class="mono">Technical expertise</span><h2>Methods and instrumentation.</h2></div>
+    <div class="skills rv">
+      <div class="sk"><h3>Computational</h3><div class="tagrow"><span>VASP</span><span>DFT / DFT+U</span><span>MACE</span><span>GRACE</span><span>MLIPs</span><span>GROMACS</span><span>ab initio MD</span><span>COMSOL Multiphysics</span><span>VMD</span><span>Bader charge</span><span>DOS</span><span>Charge-density difference</span><span>Bayesian optimisation</span><span>Active learning</span><span>Python</span><span>Linux / HPC</span></div></div>
+      <div class="sk"><h3>Electrochemical &amp; synthetic</h3><div class="tagrow"><span>Solvothermal synthesis</span><span>Thermal evaporation</span><span>Nanotube fabrication</span><span>Heterostructures</span><span>Electrochemical workstation</span><span>RDE / RRDE</span><span>EIS</span><span>H-cell</span><span>Flow cell</span><span>Isotope-labelled quantification</span></div></div>
+      <div class="sk"><h3>Characterisation</h3><div class="tagrow"><span>XRD</span><span>XPS</span><span>XANES / EXAFS</span><span>Raman</span><span>FTIR</span><span>UV-Vis</span><span>Photoluminescence</span><span>BET</span><span>SEM</span><span>TEM</span><span>TGA</span><span>DSC</span><span>DMA</span><span>NMR</span><span>Ion chromatography</span></div></div>
+      <div class="sk"><h3>Analysis software</h3><div class="tagrow"><span>Athena</span><span>Artemis</span><span>Hephaestus</span><span>CasaXPS</span><span>OriginPro</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="teaching">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">Teaching</span>
+      <h2>Connecting molecular insight to engineering judgment.</h2>
+    </div>
+    <div class="tsplit rv">
+      <div class="prose">
+        <p class="lede" style="margin-bottom:16px">The most durable learning occurs when an equation stops being a symbol and becomes an explanation.</p>
+        <p>I structure teaching around a recurring cycle: <b>predict, calculate, test, interpret</b>. Students first articulate what should happen, then build a quantitative model, compare the model with evidence, and finally decide whether the result is physically credible.</p>
+        <p>As a teaching assistant in general chemistry laboratories, I learned that students often perform a procedure successfully without understanding why each step matters. I began using short pre-laboratory questions, live conceptual checks, and post-experiment interpretation to make the reasoning visible.</p>
+        <p>A typical class begins with a physical question rather than a finished derivation. Worked examples move from idealised systems to authentic research problems &mdash; electrochemical nitrogen reduction, carbon dioxide conversion, batteries, catalytic interfaces. In advanced courses, students reproduce a published result, challenge an assumption, quantify uncertainty, and propose a defensible extension.</p>
+        <p>Mentored to date: three undergraduate, two master&rsquo;s and one international exchange researcher, contributing to one peer-reviewed publication and two conference presentations.</p>
+      </div>
+      <div>
+        <table class="tbl">
+          <thead><tr><th>Course</th><th>Level</th></tr></thead>
+          <tbody>
+            <tr><td>Chemical Engineering Thermodynamics</td><td class="lvl">UG</td></tr>
+            <tr><td>Chemical Reaction Engineering</td><td class="lvl">UG</td></tr>
+            <tr><td>Transport Phenomena</td><td class="lvl">UG</td></tr>
+            <tr><td>Numerical Methods and Process Modelling</td><td class="lvl">UG / PG</td></tr>
+            <tr><td>Materials Science for Chemical Engineers</td><td class="lvl">UG</td></tr>
+            <tr><td>Electrochemical Engineering</td><td class="lvl">Senior UG / PG</td></tr>
+            <tr><td>Computational Materials Science</td><td class="lvl">PG</td></tr>
+            <tr><td>Sustainable Catalytic Manufacturing</td><td class="lvl">PG</td></tr>
+          </tbody>
+        </table>
+        <div class="elective">
+          <span class="mono">Signature elective</span>
+          <h3>Electrochemical Reaction Engineering for Sustainable Synthesis</h3>
+          <p>Lectures combined with a modelling studio. Students derive Butler&ndash;Volmer kinetics, model diffusion and migration, analyse impedance data, calculate selectivity and energy efficiency, and construct a 1D or 2D cell model. The final project evaluates a published electrosynthesis process from active-site mechanism to reactor performance &mdash; including uncertainty, safety, critical materials and scale-up constraints.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-w" id="gallery">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">Gallery</span>
+      <h2>Conferences, teaching, and the people it happened with.</h2>
+      <p>Research is not only papers. These are the rooms, laboratories and collaborators behind the work &mdash; from the unit operations laboratory in Toronto to conference halls in Montreal and Mumbai.</p>
+    </div>
+    <div class="filters rv" id="gfilters">
+      <button class="fbtn" aria-pressed="true" data-g="all">All <em id="g-all"></em></button>
+      <button class="fbtn" aria-pressed="false" data-g="conf">Conferences &amp; talks <em id="g-conf"></em></button>
+      <button class="fbtn" aria-pressed="false" data-g="teaching">Teaching <em id="g-teaching"></em></button>
+      <button class="fbtn" aria-pressed="false" data-g="people">Groups &amp; people <em id="g-people"></em></button>
+      <button class="fbtn" aria-pressed="false" data-g="milestones">Milestones <em id="g-milestones"></em></button>
+    </div>
+    <div class="gal rv" id="galgrid"></div>
+  </div>
+</section>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <span class="lb-count" id="lbCount"></span>
+  <button class="lb-close" id="lbClose" aria-label="Close viewer">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
+  <div class="lb-cap"><span class="tagline" id="lbTag"></span><p id="lbTitle"></p><small id="lbSub"></small></div>
+</div>
+
+<section class="end" id="contact">
+  <div class="wrap">
+    <span class="mono">Contact</span>
+    <h2>Open to faculty positions, collaborations and student enquiries.</h2>
+    <p>I am particularly interested in collaborations spanning operando spectroscopy, macrocycle and coordination-complex synthesis, functional nanomaterials, molecular simulation and uncertainty-aware machine learning.</p>
+    <div class="clist">
+      <a href="mailto:souravpaul.paul3@gmail.com"><span class="mono">Email</span><b>souravpaul.paul3@gmail.com</b></a>
+      <!-- TODO: replace # with your Google Scholar URL -->
+      <a href="#"><span class="mono">Google Scholar</span><b>Sourav Paul</b></a>
+      <div><span class="mono">Location</span><b>Toronto, Ontario, Canada</b></div>
+    </div>
+    <div class="refs">
+      <div class="ref"><b>Prof. Chandra Veer Singh</b><span>Postdoctoral advisor</span><span>University of Toronto</span></div>
+      <div class="ref"><b>Dr. Uttam Kumar Ghorai</b><span>Ph.D. advisor</span><span>Ramakrishna Mission Vidyamandira</span></div>
+      <div class="ref"><b>Prof. Samir H. Mushrif</b><span>Overseas doctoral advisor</span><span>University of Alberta</span></div>
+      <div class="ref"><b>Prof. Anil K. Bhowmick</b><span>M.Tech. advisor</span><span>University of Houston</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot"><div class="wrap foot-in">
+  <span>&copy; 2026 Sourav Paul</span>
+  <span>Electrocatalysis &middot; Computational materials science &middot; Sustainable chemical synthesis</span>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var nav=document.getElementById("nav");
+  window.addEventListener("scroll",function(){nav.classList.toggle("stuck",window.scrollY>8);},{passive:true});
+
+  var rvs=document.querySelectorAll(".rv");
+  if(reduce||!("IntersectionObserver" in window)){rvs.forEach(function(e){e.classList.add("in");});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.08,rootMargin:"0px 0px -5% 0px"});
+    rvs.forEach(function(e){io.observe(e);});}
+
+  /* ---- multiscale loop ---- */
+  var LOOP={
+    dft:{t:"What does the electronic structure permit?",
+      p:"Periodic DFT and DFT+U with explicit solvation and constant-potential corrections resolve reaction networks, potential-determining steps, dissolution and segregation risk, and hydrogen-evolution competition together. The output is not a ranking but interpretable electronic descriptors and mechanistic branching points a synthetic chemist can act on.",
+      x:"Passes on&nbsp;&rarr;<br>adsorption energetics<br>&amp; reaction networks"},
+    mlip:{t:"What does the interface actually do while it works?",
+      p:"Static adsorption energies cannot describe an interface in motion. Classical and ab initio molecular dynamics follow solvent, cations, anions and intermediates directly, with machine-learned interatomic potentials extending quantum-mechanical fidelity to the length and time scales the double layer genuinely requires.",
+      x:"Passes on&nbsp;&rarr;<br>rate parameters<br>&amp; interfacial structure"},
+    micro:{t:"Does the chemistry survive the reactor?",
+      p:"DFT-derived kinetics and experimentally constrained parameters are embedded in continuum multiphysics models of electrodes and flow cells &mdash; resolving current distribution, diffusion, migration, convection, local pH, bubble coverage and overpotential losses, and identifying when performance is controlled by chemistry rather than by geometry, wetting or transport.",
+      x:"Passes on&nbsp;&rarr;<br>predicted selectivity<br>&amp; operating windows"},
+    bo:{t:"What is worth calculating or measuring next?",
+      p:"Uncertainty-aware, multi-objective Bayesian optimisation treats activity, selectivity, stability and synthesisability as competing objectives under a small-data regime, with active learning placing expensive calculations where uncertainty is highest. This is explicitly not black-box screening: every model must return a chemical statement an experiment can falsify.",
+      x:"Passes on&nbsp;&rarr;<br>recommended<br>experiment"}
+  };
+  var lt=document.getElementById("ld-t"),lp=document.getElementById("ld-p"),lx=document.getElementById("ld-x");
+  var lays=document.querySelectorAll(".lay");
+  function showLayer(k){var d=LOOP[k];if(!d)return;lt.textContent=d.t;lp.innerHTML=d.p;lx.innerHTML=d.x;}
+  lays.forEach(function(b){b.addEventListener("click",function(){
+    lays.forEach(function(x){x.setAttribute("aria-selected","false");});
+    b.setAttribute("aria-selected","true");showLayer(b.getAttribute("data-k"));});});
+  showLayer("dft");
+
+  /* ---- publications ---- */
+  var P=[
+    {t:"Emerging 2D materials for green ammonia electrosynthesis: integrating experimental, computation, and machine learning strategies toward commercialization",a:"<b>Sourav Paul</b>, P. S. Maiti, K. Sahoo, B. Keshari, T. K. Dhar, U. K. Ghorai",j:"ChemSusChem",v:"2026, 19, e202502111",doi:"10.1002/cssc.202502111",r:["first","review"],g:["ammonia"]},
+    {t:"Local enhanced electric field assisted electrocatalytic nitrate reduction to ammonia using Ni(TCNQ)â‚‚/NF nanostructures",a:"N. Mukherjee, A. Adalder, <b>Sourav Paul</b>, et al.",j:"Advanced Functional Materials",v:"2026, 36 (13), e19797",doi:"10.1002/adfm.202519797",r:[],g:["ammonia"]},
+    {t:"Morphology dependent Nâ‚‚ reduction on Cuâ‚‚O: combined experimental and computational study for efficient ammonia electrocatalytic synthesis",a:"<b>Sourav Paul</b>, A. Gain, A. Adalder, S. Pal, S. H. Mushrif, U. K. Ghorai",j:"Small",v:"2025, 2505121",doi:"10.1002/smll.202505121",r:["first"],g:["ammonia"]},
+    {t:"Nanolignin functional separators for flexible lithiumâ€“sulfur batteries with enhanced performance",a:"E. Bellinetto, V. K. Tomer, R. Malik, <b>Sourav Paul</b>, et al.",j:"Energy & Environmental Materials",v:"e70190",doi:"",r:[],g:["other"]},
+    {t:"Low-frequency hydromechanical energy triggered piezocatalytic activity of MoSâ‚‚ nanosheets for sustainable removal of Cr(VI)",a:"T. Ghosh, A. Pathak, S. Dhang, J. Mondal, <b>Sourav Paul</b>, et al.",j:"Nano Energy",v:"146, 111484",doi:"",r:[],g:["other"]},
+    {t:"Boosting selective nitrogen oxidation to nitric acid by synergizing cobalt phthalocyanine on carbon nitride surface",a:"<b>Sourav Paul</b>, A. Adalder, N. Barman, R. Thapa, A. Bera, K. Mitra, U. K. Ghorai",j:"Advanced Functional Materials",v:"2024, 34, 2408314",doi:"10.1002/adfm.202408314",r:["first"],g:["nitric"]},
+    {t:"Iron phthalocyanine hollow architecture enabled ammonia production via nitrate reduction to achieve 100% Faradaic efficiency",a:"S. Sarkar, A. Adalder, <b>Sourav Paul</b>, et al.",j:"Applied Catalysis B: Environmental",v:"2024, 343, 123580",doi:"",r:[],g:["ammonia"]},
+    {t:"Electrocatalytic nitrogen reduction to ammonia at low potential using a phenalenyl based iron(III) complex",a:"S. R. Waghela, A. Adalder, J. Bhattacharjee, N. Mukherjee, <b>Sourav Paul</b>, U. K. Ghorai",j:"Dalton Transactions",v:"2024, 53, 16154â€“16158",doi:"10.1039/D4DT01745E",r:[],g:["ammonia"]},
+    {t:"Dual metal site-mediated efficient Câ€“N coupling toward electrochemical urea synthesis",a:"<b>Sourav Paul</b>, S. Sarkar, A. Adalder, A. Banerjee, U. K. Ghorai",j:"Journal of Materials Chemistry A",v:"2023, 11, 13249â€“13254",doi:"10.1039/D3TA01011B",r:["first"],g:["urea"]},
+    {t:"Strengthening the metal center of Coâ€“Nâ‚„ active sites in a 1Dâ€“2D heterostructure for nitrate and nitrogen reduction reaction to ammonia",a:"<b>Sourav Paul</b>, S. Sarkar, A. Adalder, S. Kapse, R. Thapa, U. K. Ghorai",j:"ACS Sustainable Chemistry & Engineering",v:"2023, 11, 6191â€“6200",doi:"10.1021/acssuschemeng.2c07114",r:["first"],g:["ammonia"]},
+    {t:"1D/2D interface engineering of a CoPcâ€“Câ‚ƒNâ‚„ heterostructure for boosting the nitrogen reduction reaction to NHâ‚ƒ",a:"<b>Sourav Paul</b>, S. Sarkar, et al.",j:"Dalton Transactions",v:"2023, 52, 15360â€“15364",doi:"10.1039/D3DT01790G",r:["first"],g:["ammonia"]},
+    {t:"Progress of electrocatalytic urea synthesis: strategic design, reactor engineering, mechanistic details and techno-commercial study",a:"<b>Sourav Paul</b>, A. Adalder, U. K. Ghorai",j:"Materials Chemistry Frontiers",v:"2023, 7, 3820â€“3854",doi:"10.1039/D3QM00433C",r:["first","review"],g:["urea"]},
+    {t:"Controlling the metalâ€“ligand coordination environment of manganese phthalocyanine in a 1Dâ€“2D heterostructure for enhancing nitrate reduction to ammonia",a:"A. Adalder, <b>Sourav Paul</b>, N. Barman, et al.",j:"ACS Catalysis",v:"2023, 13, 13516â€“13527",doi:"",r:[],g:["ammonia"]},
+    {t:"Progress of electrochemical synthesis of nitric acid: catalyst design, mechanistic insights, protocol and challenges",a:"A. Adalder, <b>Sourav Paul</b>, U. K. Ghorai",j:"Journal of Materials Chemistry A",v:"2023, 11, 10125â€“10148",doi:"10.1039/D2TA08928A",r:["review"],g:["nitric"]},
+    {t:"Selective electrocatalytic oxidation of nitrogen to nitric acid using manganese phthalocyanine",a:"A. Adalder, <b>Sourav Paul</b>, et al.",j:"ACS Applied Materials & Interfaces",v:"2023, 15, 34642â€“34650",doi:"",r:[],g:["nitric"]},
+    {t:"Understanding the site-selective electrocatalytic co-reduction mechanism for green urea synthesis using copper phthalocyanine nanotubes",a:"J. Mukherjee, <b>Sourav Paul</b>, A. Adalder, S. Kapse, R. Thapa, S. Mandal, B. Ghorai, S. Sarkar, U. K. Ghorai",j:"Advanced Functional Materials",v:"2022, 32, 2200882",doi:"10.1002/adfm.202200882",r:[],g:["urea"]},
+    {t:"Graphene-wrapped nickel phthalocyanine nanohybrid: efficient electrocatalyst for nitrogen reduction reaction",a:"S. Murmu, <b>Sourav Paul</b>, et al.",j:"Catalysis Today",v:"2023",doi:"10.1016/j.cattod.2022.10.020",r:[],g:["ammonia"]},
+    {t:"Alqâ‚ƒâ€“graphene bifunctional nanocomposite for cold cathode and luminescent anode in field emission display applications",a:"<b>Sourav Paul</b>, A. Adalder, et al.",j:"Journal of Electronic Materials",v:"2022",doi:"10.1007/s11664-022-10009-x",r:["first"],g:["other"]},
+    {t:"Upconversion luminescence and time decay study of Ybâ€“Er doped BaWOâ‚„ nanophosphor",a:"A. De, A. K. Dey, B. Samanta, S. Sur, <b>Sourav Paul</b>, et al.",j:"Journal of Materials Science: Materials in Electronics",v:"2022, 33, 9641â€“9649",doi:"10.1007/s10854-021-07607-6",r:[],g:["other"]},
+    {t:"Scalable production of cobalt phthalocyanine nanotubes: efficient and robust hollow electrocatalyst for ammonia synthesis at room temperature",a:"U. K. Ghorai, <b>Sourav Paul</b>, B. Ghorai, A. Adalder, S. Kapse, R. Thapa, A. Nagendra, A. Gain",j:"ACS Nano",v:"2021, 15, 5230â€“5239",doi:"10.1021/acsnano.0c10596",r:[],g:["ammonia"]},
+    {t:"Unveiling the genesis of the high catalytic activity in nickel phthalocyanine for electrochemical ammonia synthesis",a:"S. Murmu, <b>Sourav Paul</b>, et al.",j:"Journal of Materials Chemistry A",v:"2021, 9, 14477â€“14484",doi:"10.1039/D1TA00766A",r:[],g:["ammonia"]}
+  ];
+
+  var list=document.getElementById("publist");
+  function render(f){
+    list.innerHTML="";
+    var n=0;
+    P.forEach(function(p,i){
+      var ok = f==="all" || p.r.indexOf(f)>-1 || p.g.indexOf(f)>-1;
+      if(!ok) return;
+      n++;
+      var row=document.createElement("div");row.className="pub";
+      var marks="";
+      if(p.r.indexOf("first")>-1) marks+='<span class="mk mk-1">First author</span>';
+      if(p.r.indexOf("review")>-1) marks+='<span class="mk mk-r">Invited review</span>';
+      var doiHtml = p.doi ? '<a class="doi" href="https://doi.org/'+p.doi+'" target="_blank" rel="noopener">doi:'+p.doi+'</a>' : '';
+      row.innerHTML='<span class="idx">'+String(i+1).padStart(2,"0")+'</span>'
+        +'<div><p class="t">'+p.t+'</p><p class="a">'+p.a+'</p>'
+        +'<div class="meta"><span class="jn">'+p.j+'</span><span class="yr">'+p.v+'</span>'+doiHtml+marks+'</div></div>';
+      list.appendChild(row);
+    });
+    if(!n){var e=document.createElement("p");e.className="empty";e.textContent="No publications in this category.";list.appendChild(e);}
+  }
+  function count(f){var n=0;P.forEach(function(p){if(f==="all"||p.r.indexOf(f)>-1||p.g.indexOf(f)>-1)n++;});return n;}
+  ["all","first","review","ammonia","urea","nitric","other"].forEach(function(f){
+    var el=document.getElementById("c-"+f); if(el) el.textContent=count(f);
+  });
+  var fbtns=document.querySelectorAll(".fbtn");
+  fbtns.forEach(function(b){b.addEventListener("click",function(){
+    fbtns.forEach(function(x){x.setAttribute("aria-pressed","false");});
+    b.setAttribute("aria-pressed","true");render(b.getAttribute("data-f"));});});
+  render("all");
+
+  /* ================= GALLERY =================
+     To add your photos: drop the files into an "images" folder beside this
+     page using exactly the filenames in `src` below. Nothing else to change. */
+  var G=[
+    {src:"images/01-teaching-poster.jpg", g:"teaching", tag:"Teaching Â· University of Toronto",
+     t:"Undergraduate unit operations laboratory",
+     s:"Final project presentation â€” the influence of recycle on metallurgical leaching."},
+    {src:"images/02-teaching-cohort.jpg", g:"teaching", tag:"Teaching Â· University of Toronto",
+     t:"The full teaching cohort",
+     s:"Chemical engineering undergraduates at the end of the unit operations term."},
+    {src:"images/03-csche-2025-a.jpg", g:"conf", tag:"CSChE 2025",
+     t:"Canadian Chemistry and Chemical Engineering Conference",
+     s:"Chemical Institute of Canada, 2025."},
+    {src:"images/04-csche-2025-b.jpg", g:"conf", tag:"CSChE 2025 Â· 5â€“7 October",
+     t:"SCGCh / CSChE 2025",
+     s:"Hosted with the Canadian Journal of Chemical Engineering."},
+    {src:"images/05-csche-2025-talk.jpg", g:"conf", tag:"CSChE 2025 Â· Talk",
+     t:"Screening methodology for electrochemical urea synthesis",
+     s:"Presenting the descriptor funnel from thermodynamic and aggregation stability through adsorption, activity and selectivity to a selected catalyst."},
+    {src:"images/06-thesis-submission.jpg", g:"milestones", tag:"Doctorate",
+     t:"Thesis submission",
+     s:"With Dr. Uttam Kumar Ghorai, doctoral advisor."},
+    {src:"images/07-polanyi.jpg", g:"conf", tag:"CSChE 2026",
+     t:"With Nobel Laureate John C. Polanyi",
+     s:"Chemistry, 1986 â€” University of Toronto."},
+    {src:"images/08-uoft-group.jpg", g:"people", tag:"University of Toronto",
+     t:"Singh group, Materials Science &amp; Engineering",
+     s:"Current postdoctoral group, with Prof. Chandra Veer Singh."},
+    {src:"images/09-mushrif-group.jpg", g:"people", tag:"University of Alberta",
+     t:"Mushrif group",
+     s:"During the SERB Overseas Visiting Doctoral Fellowship, with Prof. Samir H. Mushrif."},
+    {src:"images/10-vidyamandira.jpg", g:"milestones", tag:"Doctorate",
+     t:"Ramakrishna Mission Vidyamandira",
+     s:"Where the doctoral research was carried out, with advisors and examiners."},
+    {src:"images/11-after-phd.jpg", g:"milestones", tag:"Doctorate",
+     t:"After the defence",
+     s:"With Dr. Uttam Kumar Ghorai, Howrah."},
+    {src:"images/12-roberts.jpg", g:"conf", tag:"CACEE 2022 Â· TIFR Mumbai",
+     t:"With Nobel Laureate Richard J. Roberts",
+     s:"Physiology or Medicine, 1993."},
+    {src:"images/13-duari.jpg", g:"people", tag:"Outreach",
+     t:"With Prof. Debiprasad Duari",
+     s:"Indian astrophysicist and science communicator."}
+  ];
+  var VIDEO={url:"https://www.youtube.com/watch?v=p-5K89prdG0",
+    tag:"ACS Sustainable Chemistry &amp; Engineering",
+    t:"Emerging Scholar recognition",
+    s:"Watch the feature on the journal's Emerging Scholar programme."};
+
+  var grid=document.getElementById("galgrid");
+  var PH='<span class="ph"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="10" r="1.8" stroke="currentColor" stroke-width="1.4"/><path d="M3 17l5.5-5 4 3.5L16 12l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Photo pending</span></span>';
+  var shown=[];
+
+  function renderGal(f){
+    grid.innerHTML=""; shown=[];
+    G.forEach(function(p){
+      if(f!=="all" && p.g!==f) return;
+      var i=shown.length; shown.push(p);
+      var b=document.createElement("button");
+      b.className="gitem"; b.type="button";
+      b.setAttribute("aria-label","Open photo: "+p.t.replace(/&amp;/g,"&"));
+      b.innerHTML='<img src="'+p.src+'" alt="'+p.t.replace(/&amp;/g,"&")+'" loading="lazy">'
+        +'<span class="cap"><span class="tagline">'+p.tag+'</span><p>'+p.t+'</p><small>'+p.s+'</small></span>';
+      var img=b.querySelector("img");
+      img.addEventListener("error",function(){ img.outerHTML=PH; });
+      b.addEventListener("click",function(){ openLb(i); });
+      grid.appendChild(b);
+    });
+    if(f==="all"||f==="conf"){
+      var v=document.createElement("a");
+      v.className="gitem vid"; v.href=VIDEO.url; v.target="_blank"; v.rel="noopener";
+      v.innerHTML='<span class="ph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M10 8.5l5.5 3.5L10 15.5v-7z" fill="currentColor"/></svg><span>Watch the video</span></span>'
+        +'<span class="cap"><span class="tagline">'+VIDEO.tag+'</span><p>'+VIDEO.t+'</p><small>'+VIDEO.s+'</small></span>';
+      grid.appendChild(v);
+    }
+  }
+  function gcount(f){var n=0;G.forEach(function(p){if(f==="all"||p.g===f)n++;});return n;}
+  ["all","conf","teaching","people","milestones"].forEach(function(f){
+    var el=document.getElementById("g-"+f); if(el) el.textContent=gcount(f);
+  });
+  var gbtns=document.querySelectorAll("#gfilters .fbtn");
+  gbtns.forEach(function(b){b.addEventListener("click",function(){
+    gbtns.forEach(function(x){x.setAttribute("aria-pressed","false");});
+    b.setAttribute("aria-pressed","true"); renderGal(b.getAttribute("data-g"));});});
+  renderGal("all");
+
+  /* ---- lightbox ---- */
+  var lb=document.getElementById("lb"), lbImg=document.getElementById("lbImg"),
+      lbTag=document.getElementById("lbTag"), lbTitle=document.getElementById("lbTitle"),
+      lbSub=document.getElementById("lbSub"), lbCount=document.getElementById("lbCount"),
+      cur=0, lastFocus=null;
+
+  function openLb(i){
+    if(!shown.length) return;
+    cur=(i+shown.length)%shown.length;
+    var p=shown[cur];
+    lbImg.src=p.src; lbImg.alt=p.t.replace(/&amp;/g,"&");
+    lbTag.innerHTML=p.tag; lbTitle.innerHTML=p.t; lbSub.innerHTML=p.s;
+    lbCount.textContent=String(cur+1).padStart(2,"0")+" / "+String(shown.length).padStart(2,"0");
+    lastFocus=document.activeElement;
+    lb.classList.add("on"); document.body.style.overflow="hidden";
+    document.getElementById("lbClose").focus();
+  }
+  function closeLb(){
+    lb.classList.remove("on"); document.body.style.overflow="";
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.getElementById("lbClose").addEventListener("click",closeLb);
+  document.getElementById("lbPrev").addEventListener("click",function(){openLb(cur-1);});
+  document.getElementById("lbNext").addEventListener("click",function(){openLb(cur+1);});
+  lb.addEventListener("click",function(e){ if(e.target===lb||e.target.classList.contains("lb-stage")) closeLb(); });
+  document.addEventListener("keydown",function(e){
+    if(!lb.classList.contains("on")) return;
+    if(e.key==="Escape") closeLb();
+    if(e.key==="ArrowLeft") openLb(cur-1);
+    if(e.key==="ArrowRight") openLb(cur+1);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(ev){
+    var h=a.getAttribute("href"); if(h.length<2) return;
+    var t=document.querySelector(h); if(!t) return; ev.preventDefault();
+    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-68,behavior:reduce?"auto":"smooth"});});});
+})();
+</script>
+
+</body>
+</html>
+
