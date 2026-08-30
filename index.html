@@ -1,16 +1,17 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Sourav Paul, PhD - Postdoctoral Fellow, University of Toronto. Electrocatalysis, the electrified interface, and multiscale computational chemistry for carbon-nitrogen manufacturing.">
+<meta name="description" content="Sourav Paul, PhD - Postdoctoral Fellow, University of Toronto. The electrified interface: electrocatalysis, battery cathodes, solid-state electrolytes, and multiscale computational materials science.">
 <meta name="author" content="Sourav Paul">
 <meta property="og:title" content="Sourav Paul, Ph.D.">
-<meta property="og:description" content="Electrocatalysis and the electrified interface - DFT, machine-learned potentials, and electrochemical synthesis of ammonia, urea and nitric acid.">
+<meta property="og:description" content="The electrified interface - electrocatalysis, battery cathodes and solid-state electrolytes, studied with DFT, machine-learned potentials and multiphysics modelling.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://souravpaulpaul3-bit.github.io/">
 </head>
-<body><title>Sourav Paul</title>
+<body>
+<title>Sourav Paul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
@@ -21,6 +22,11 @@
   --rule:#DDE4F0; --rule-2:#C3CEE2;
   --blue:#16357E; --blue-2:#2A5BC7; --blue-soft:#E5EBF8;
   --copper:#A85A20; --copper-soft:#F6EBE1;
+  --c-teal:#0B7C88; --c-teal-s:#DFF1F3;
+  --c-green:#1B7A4E; --c-green-s:#E0F1E7;
+  --c-amber:#B0700A; --c-amber-s:#FAEEDA;
+  --c-violet:#5B3E9B; --c-violet-s:#EDE7F8;
+  --c-rose:#A83250; --c-rose-s:#FAE6EB;
   --d:"Newsreader",Georgia,"Times New Roman",serif;
   --f:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --m:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -92,18 +98,81 @@ em.j{font-style:italic}
 .portrait figcaption{padding:12px 15px;border-top:1px solid var(--rule);font-family:var(--m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 
 /* AFFILIATIONS */
-.afil{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface);padding:clamp(22px,3vw,32px) 0}
+.afil{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper);padding:clamp(24px,3.2vw,36px) 0}
 .afil-lbl{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;display:block}
-.afil-in{display:flex;flex-wrap:wrap}
-.af{flex:1 1 165px;padding:6px 18px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:9px;min-width:0}
-.af:first-child{border-left:0;padding-left:0}
-.af .lg{height:40px;display:flex;align-items:center}
-.af .lg img{max-height:40px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .3s var(--ez),opacity .3s var(--ez)}
-.af:hover .lg img{filter:none;opacity:1}
+.afil-in{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.af{background:#FFFFFF;border:1px solid var(--rule);border-radius:6px;padding:16px 14px 15px;display:flex;flex-direction:column;gap:11px;align-items:center;text-align:center;min-width:0;transition:transform .35s var(--ez),box-shadow .35s var(--ez),border-color .35s var(--ez)}
+.af:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 16px 32px -22px rgba(14,26,43,.45)}
+.af .lg{height:78px;width:100%;background:#FFFFFF;border-radius:4px;padding:6px;display:flex;align-items:center;justify-content:center}
+.af .lg img{max-height:66px;max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s var(--ez)}
+.af:hover .lg img{transform:scale(1.06)}
 .af .lg .mono-badge{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:var(--d);font-size:13.5px;font-weight:600;letter-spacing:.01em;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3),0 0 0 3px var(--blue-soft);transition:transform .3s var(--ez),box-shadow .3s var(--ez)}
 .af:hover .lg .mono-badge{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4),0 0 0 4px var(--blue-soft)}
 .af b{font-family:var(--d);font-size:14.5px;font-weight:500;letter-spacing:-.014em;line-height:1.25}
-.af span{font-family:var(--m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.af span{font-family:var(--m);font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);padding:3px 8px;border-radius:99px}
+
+/* RESEARCH INTERESTS DIAGRAM */
+.ri{border:1px solid var(--rule);border-radius:6px;background:var(--surface);overflow:hidden}
+.sec-w .ri{background:var(--paper)}
+/* ABOUT */
+.about{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(28px,4.5vw,60px);align-items:start}
+.about-p p{font-size:16px;color:var(--ink-2);line-height:1.7;max-width:64ch}
+.about-p p+p{margin-top:15px}
+.about-p p b{color:var(--ink);font-weight:600}
+.about-p .first{font-family:var(--d);font-size:clamp(18px,2.1vw,22px);line-height:1.5;color:var(--ink);letter-spacing:-.012em;margin-bottom:18px;max-width:52ch}
+.now{border:1px solid var(--rule);border-radius:6px;background:var(--surface);overflow:hidden;position:sticky;top:78px}
+.sec-w .now{background:var(--paper)}
+.now-h{padding:16px 20px 12px;border-bottom:1px solid var(--rule)}
+.now-h .mono{color:var(--blue);display:block;margin-bottom:6px}
+.now-h p{font-family:var(--d);font-size:17px;letter-spacing:-.02em;color:var(--ink)}
+.now ul{padding:14px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.now li{font-size:14px;color:var(--ink);display:flex;gap:11px;align-items:flex-start;line-height:1.45}
+.now li i{width:7px;height:7px;border-radius:2px;flex:0 0 auto;margin-top:6px}
+.now li:nth-child(1) i,.now li:nth-child(2) i,.now li:nth-child(3) i,.now li:nth-child(4) i{background:var(--c-green)}
+.now li:nth-child(5) i,.now li:nth-child(6) i{background:var(--c-violet)}
+.now-f{border-top:1px solid var(--rule);padding:13px 20px;background:var(--paper-2);font-size:13px;color:var(--ink-2);line-height:1.5}
+.sec-w .now-f{background:var(--surface)}
+
+.ri-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
+.ri-col{background:var(--surface);padding:clamp(20px,2.6vw,28px);transition:background .35s var(--ez)}
+.sec-w .ri-col{background:var(--paper)}
+.ri-col:hover{background:var(--blue-soft)}
+.ri-h{display:block;font-family:var(--d);font-size:19px;font-weight:600;letter-spacing:-.022em;margin-bottom:11px;padding-bottom:10px;border-bottom:2px solid var(--rule)}
+.ri-h1{color:var(--c-green);border-bottom-color:var(--c-green)}
+.ri-h2{color:var(--c-violet);border-bottom-color:var(--c-violet)}
+.ri-h3{color:var(--blue);border-bottom-color:var(--blue)}
+.ri-col p{font-size:14px;color:var(--ink-2);margin-bottom:14px;line-height:1.55}
+.ri-col ul{display:flex;flex-direction:column;gap:8px}
+.ri-col li{font-size:14px;color:var(--ink);display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.ri-col li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--rule-2);margin-top:8px;flex:0 0 auto;transition:background .3s var(--ez)}
+.ri-col:hover li::before{background:var(--blue)}
+.ri-grid{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:0}
+.ri-side{padding:clamp(18px,2.4vw,26px);display:flex;flex-direction:column;gap:10px;justify-content:center}
+.ri-side.l{border-right:1px solid var(--rule)}
+.ri-side.r{border-left:1px solid var(--rule)}
+.ri-side h4{font-family:var(--m);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:4px}
+.ri-side.l h4{color:var(--c-teal)} .ri-side.r h4{color:var(--c-green)}
+.chem{border-radius:5px;padding:11px 13px;display:flex;flex-direction:column;gap:2px;transition:transform .3s var(--ez)}
+.chem:hover{transform:translateX(3px)}
+.ri-side.r .chem:hover{transform:translateX(-3px)}
+.chem b{font-family:var(--d);font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.chem span{font-family:var(--f);font-size:12px;color:var(--ink-2);line-height:1.3}
+.chem.t{background:var(--c-teal-s)} .chem.t b{color:var(--c-teal)}
+.chem.g{background:var(--c-green-s)} .chem.g b{color:var(--c-green)}
+.chem.a{background:var(--c-amber-s)} .chem.a b{color:var(--c-amber)}
+.chem.v{background:var(--c-violet-s)} .chem.v b{color:var(--c-violet)}
+.ri-mid{padding:clamp(10px,1.6vw,18px);display:grid;place-items:center}
+.ri-mid svg{width:100%;height:auto;max-width:480px;display:block}
+.ri-foot{border-top:1px solid var(--rule);padding:14px clamp(18px,2.4vw,26px);display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--paper)}
+.sec-w .ri-foot{background:var(--surface)}
+.ri-foot .mono{color:var(--ink-3);margin-right:6px}
+.rk{font-family:var(--m);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:99px}
+.rk1{background:var(--blue-soft);color:var(--blue)}
+.rk2{background:var(--c-teal-s);color:var(--c-teal)}
+.rk3{background:var(--c-green-s);color:var(--c-green)}
+.rk4{background:var(--c-amber-s);color:var(--c-amber)}
+.rk5{background:var(--c-violet-s);color:var(--c-violet)}
+.rk6{background:var(--c-rose-s);color:var(--c-rose)}
 
 /* NEWS */
 .news{border-top:1px solid var(--ink)}
@@ -170,7 +239,16 @@ em.j{font-style:italic}
 .sec-w .th{background:var(--paper)}
 .th:hover{background:var(--blue-soft)}
 .th .n{font-family:var(--d);font-size:34px;color:var(--rule-2);line-height:.9;font-weight:500;transition:color .35s var(--ez)}
-.th:hover .n{color:var(--blue)}
+.th:nth-child(1):hover .n{color:var(--blue)}
+.th:nth-child(2):hover .n{color:var(--c-teal)}
+.th:nth-child(3):hover .n{color:var(--c-violet)}
+.th:nth-child(1):hover{background:var(--blue-soft)}
+.th:nth-child(2):hover{background:var(--c-teal-s)}
+.th:nth-child(3):hover{background:var(--c-violet-s)}
+.th:nth-child(2) .hyp{border-left-color:var(--c-teal)}
+.th:nth-child(2) .hyp b{color:var(--c-teal)}
+.th:nth-child(3) .hyp{border-left-color:var(--c-violet)}
+.th:nth-child(3) .hyp b{color:var(--c-violet)}
 .th h3{font-size:clamp(20px,2.3vw,25px);letter-spacing:-.022em;margin-bottom:9px}
 .th .hyp{font-size:14.5px;color:var(--ink);background:var(--paper-2);border-left:2px solid var(--blue);padding:10px 14px;border-radius:0 3px 3px 0;margin-bottom:12px;max-width:70ch}
 .sec-w .th .hyp{background:var(--surface)}
@@ -248,12 +326,28 @@ em.j{font-style:italic}
 
 /* AWARDS + SKILLS */
 .awards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
-.aw{background:var(--surface);padding:16px 20px;display:grid;grid-template-columns:52px 1fr;gap:14px;transition:background .3s var(--ez)}
+.aw{background:var(--surface);padding:17px 20px;display:grid;grid-template-columns:52px 1fr;gap:14px;transition:background .3s var(--ez)}
 .sec-w .aw{background:var(--paper)}
 .aw:hover{background:var(--blue-soft)}
 .aw .y{font-family:var(--m);font-size:11.5px;color:var(--blue);padding-top:3px}
-.aw h4{font-family:var(--f);font-size:15px;font-weight:600;letter-spacing:0;margin-bottom:2px}
+.aw h4{font-family:var(--f);font-size:15px;font-weight:600;letter-spacing:0;margin-bottom:3px}
 .aw p{font-size:13.5px;color:var(--ink-2)}
+.aw .cited{display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);font-style:italic;line-height:1.4}
+
+/* CONFERENCES */
+.conf{border-top:1.5px solid var(--ink)}
+.cf{display:grid;grid-template-columns:58px 1fr 128px;gap:18px;padding:15px 0;border-bottom:1px solid var(--rule);align-items:start;transition:background .25s var(--ez),padding-left .25s var(--ez)}
+.cf:hover{background:var(--blue-soft);padding-left:8px}
+.cf .y{font-family:var(--m);font-size:11.5px;color:var(--blue);padding-top:3px;font-variant-numeric:tabular-nums}
+.cf h4{font-family:var(--f);font-size:15.5px;font-weight:600;letter-spacing:0;margin-bottom:3px;line-height:1.35}
+.cf .loc{font-size:13.5px;color:var(--ink-2)}
+.cf .ttl{display:block;margin-top:5px;font-size:13px;color:var(--ink-3);font-style:italic;line-height:1.4;max-width:70ch}
+.role-b{font-family:var(--m);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:5px 9px;border-radius:99px;justify-self:end;white-space:nowrap;margin-top:2px}
+.rb-inv{background:var(--blue);color:#fff}
+.rb-oral{background:var(--c-teal-s);color:var(--c-teal)}
+.rb-post{background:var(--c-violet-s);color:var(--c-violet)}
+.rb-att{background:var(--paper-2);color:var(--ink-3)}
+.rb-award{background:var(--c-amber-s);color:var(--c-amber)}
 .skills{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .sk{border:1px solid var(--rule);border-radius:3px;padding:20px;background:var(--surface);transition:border-color .3s var(--ez)}
 .sec-w .sk{background:var(--paper)}
@@ -319,7 +413,10 @@ em.j{font-style:italic}
   .gal{columns:2}
   .hero-grid{grid-template-columns:1fr;gap:28px}
   .portrait{max-width:300px}
-  .af{flex:1 1 132px;padding:6px 14px}
+  .afil-in{grid-template-columns:repeat(3,1fr)}
+  .ri-3{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr;gap:28px}
+  .now{position:static}
   .metrics{grid-template-columns:repeat(3,1fr)}
   .loop-top{grid-template-columns:1fr 1fr}
   .loop-detail{grid-template-columns:1fr}
@@ -331,8 +428,7 @@ em.j{font-style:italic}
   .nav-links{display:none}
   .gal{columns:1}
   .metrics{grid-template-columns:1fr 1fr}
-  .af{flex:1 1 100%;border-left:0;padding:10px 0;border-top:1px solid var(--rule)}
-  .af:first-child{border-top:0}
+  .afil-in{grid-template-columns:1fr 1fr}
   .nrow{grid-template-columns:1fr;gap:4px}
   .loop-top{grid-template-columns:1fr}
   .th{grid-template-columns:1fr;gap:8px}
@@ -351,7 +447,7 @@ em.j{font-style:italic}
   <div class="wrap nav-in">
     <a class="brand" href="#top"><i></i> Sourav Paul</a>
     <div class="nav-links">
-      <a href="#news">News</a><a href="#research">Research</a><a href="#loop">Method</a><a href="#pubs">Publications</a><a href="#experience">Experience</a><a href="#teaching">Teaching</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#news">News</a><a href="#research">Research</a><a href="#pubs">Publications</a><a href="#experience">Experience</a><a href="#awards">Awards</a><a href="#teaching">Teaching</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
     </div>
     <a class="btn btn-p btn-s" href="Dr_Sourav_Paul_CV.pdf" target="_blank" rel="noopener"><span>Curriculum Vitae</span></a>
   </div>
@@ -363,8 +459,8 @@ em.j{font-style:italic}
     <div class="hero-l">
     <p class="eyebrow mono"><i></i> Postdoctoral Fellow &middot; University of Toronto</p>
     <h1><span class="ln"><i>Sourav Paul,</i></span><span class="ln"><i>Ph.D.</i></span></h1>
-    <p class="role">Computational and experimental chemist working on <b>electrocatalysis and the electrified interface</b>. Department of Materials Science &amp; Engineering, University of Toronto, with Prof. Chandra Veer Singh.</p>
-    <p class="thesis">Selectivity at an electrified interface is not a property of the catalyst alone &mdash; it is the <u>coupled state of four variables</u>: the coordination environment of the active metal centre, the local electric field, the solvation and ion structure of the double layer, and interfacial mass transport.</p>
+    <p class="role">Computational and experimental materials chemist working on <b>the electrified interface</b> &mdash; electrocatalysis, battery cathodes and solid-state electrolytes. Department of Materials Science &amp; Engineering, University of Toronto, with Prof. Chandra Veer Singh.</p>
+    <p class="thesis">Whether a device makes a molecule or stores a charge, its performance is decided in the same place: a <u>few nanometres of electrified interface</u>, where the coordination environment, the local electric field, the ion and solvation structure, and interfacial transport act together.</p>
     <div class="hcta">
       <a class="btn btn-p" href="mailto:souravpaul.paul3@gmail.com"><span>
         <svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 4.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -421,14 +517,46 @@ em.j{font-style:italic}
   </div>
 </section>
 
-<section class="sec" id="news" style="padding-top:clamp(44px,6vw,72px);padding-bottom:clamp(44px,6vw,72px)">
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">About</span>
+      <h2>How I got here.</h2>
+    </div>
+    <div class="about rv">
+      <div class="about-p">
+        <p class="first">I was born and raised in Kolkata. My path into chemistry began at Ramakrishna Mission Vidyamandira, Belur Math, and has since taken me through rubber technology, a spell in industry, and doctoral work on electrocatalysis, to the electrified interfaces I study today in Toronto.</p>
+        <p>I read for a B.Sc. (Honours) in Industrial Chemistry at <b>Ramakrishna Mission Vidyamandira</b> and stayed on for an M.Sc. in Applied Chemistry with the University of Calcutta, growing copper phthalocyanine nanostructures by thermal evaporation. Two early experiences set the direction: a spell at the <b>Saha Institute of Nuclear Physics</b> studying how gold nanoparticles interact with proteins, and an Indian Academy of Sciences Summer Research Fellowship at <b>INST Mohali</b> making silicon quantum dots. Both taught me that a material is only interesting where its structure meets its function.</p>
+        <p>At <b>IIT Kharagpur</b> I took an M.Tech. in Rubber Technology with Prof. Anil K. Bhowmick, evaluating graphene as a multifunctional nanofiller in rubber compounds, partly alongside Birla Carbon. I then joined the <b>Pulp and Fibre Innovation Centre</b> at Grasim Industries, Aditya Birla Group, as a <b>Research Associate</b>. Those years were an engineer&rsquo;s education in dispersion, interfaces, specification and scale-up, and they left me with an instinct I still rely on: a material only matters once it survives contact with a real process.</p>
+        <p>I returned to research to work on the problem that had been bothering me &mdash; that the chemicals underpinning modern agriculture are still made with fossil heat. My doctoral work at <b>Ramakrishna Mission Vidyamandira</b> with <b>Dr. Uttam Kumar Ghorai</b> addressed the electrochemical fixation of N<sub>2</sub> and CO<sub>2</sub> on cobalt phthalocyanine catalysts: ambient, renewable-electricity-driven routes to ammonia, urea and nitric acid.</p>
+        <p>It became clear that experiments alone could not explain what we were seeing. A <b>SERB Overseas Visiting Doctoral Fellowship</b> took me to <b>Prof. Samir H. Mushrif</b> at the University of Alberta for a year, where computation moved from a supporting tool to the centre of how I work.</p>
+        <p>I am now a postdoctoral fellow with <b>Prof. Chandra Veer Singh</b> at the University of Toronto, building connected multiscale workflows &mdash; density functional theory, molecular dynamics with machine-learned interatomic potentials, multiphysics modelling and uncertainty-aware optimisation &mdash; and extending them from catalysis into battery cathodes and solid-state electrolytes.</p>
+        <p>My broader aim is to understand structure&ndash;activity relationships well enough to design for them: to take a chemical question at the scale of a single active site and follow it honestly all the way to a working device, with every prediction meeting an experiment that can falsify it.</p>
+      </div>
+      <aside class="now">
+        <div class="now-h"><span class="mono">Currently working on</span><p>Electrochemical energy conversion and storage</p></div>
+        <ul>
+          <li><i></i>Green ammonia from N<sub>2</sub> and nitrate reduction</li>
+          <li><i></i>Urea by electrochemical C&ndash;N coupling</li>
+          <li><i></i>Nitric acid by selective N<sub>2</sub> oxidation</li>
+          <li><i></i>CO<sub>2</sub> capture and conversion to fuels and chemicals</li>
+          <li><i></i>Battery cathode materials and surface modification</li>
+          <li><i></i>Solid-state electrolytes and electrode&ndash;electrolyte interfaces</li>
+        </ul>
+        <p class="now-f">Studied through connected DFT, machine-learned molecular dynamics, multiphysics and machine-learning workflows, anchored to synthesis and electrochemical measurement.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-w" id="news" style="padding-top:clamp(44px,6vw,72px);padding-bottom:clamp(44px,6vw,72px)">
   <div class="wrap">
     <div class="sh rv" style="margin-bottom:22px"><span class="mono">Recent</span><h2>News and updates.</h2></div>
     <div class="news rv">
       <div class="nrow"><span class="nd">2026</span><p>Invited review on <b>emerging 2D materials for green ammonia electrosynthesis</b> published in <em>ChemSusChem</em>.</p></div>
       <div class="nrow"><span class="nd">2026</span><p>Work on local-field-assisted nitrate reduction using Ni(TCNQ)<sub>2</sub> nanostructures published in <em>Advanced Functional Materials</em>.</p></div>
       <div class="nrow"><span class="nd">2025</span><p>Joined the <b>University of Toronto</b> as a Postdoctoral Fellow in Materials Science &amp; Engineering with Prof. Chandra Veer Singh.</p></div>
-      <div class="nrow"><span class="nd">2025</span><p>Attended <b>SCGCh / CSChE 2025</b> in MontrÃ©al, 5&ndash;7 October &mdash; &ldquo;Chemical engineering in an AI world: a pioneer of sustainability&rdquo;.</p></div>
+      <div class="nrow"><span class="nd">2025</span><p>Attended <b>SCGCh / CSChE 2025</b> in Montréal, 5&ndash;7 October &mdash; &ldquo;Chemical engineering in an AI world: a pioneer of sustainability&rdquo;.</p></div>
       <div class="nrow"><span class="nd">2025</span><p>Morphology-dependent N<sub>2</sub> reduction on Cu<sub>2</sub>O published in <em>Small</em>.</p></div>
       <div class="nrow"><span class="nd">2024</span><p>Named a <b>finalist for the Best Paper Award</b> in Carbon Capture and Utilization at the international conference held at JNCASR.</p></div>
       <div class="nrow"><span class="nd">2024</span><p>Selective nitrogen oxidation to nitric acid published in <em>Advanced Functional Materials</em>.</p></div>
@@ -437,10 +565,10 @@ em.j{font-style:italic}
 </section>
 
 <div class="wrap"><div class="scalerule" aria-hidden="true">
-  <div data-l="Ã… Â· electrons"></div><div></div><div></div><div></div>
-  <div data-l="nm Â· active site"></div><div></div><div></div><div></div>
-  <div data-l="Âµm Â· interface"></div><div></div><div></div><div></div>
-  <div data-l="cm Â· reactor"></div><div></div><div></div><div></div>
+  <div data-l="Å · electrons"></div><div></div><div></div><div></div>
+  <div data-l="nm · active site"></div><div></div><div></div><div></div>
+  <div data-l="µm · interface"></div><div></div><div></div><div></div>
+  <div data-l="cm · reactor"></div><div></div><div></div><div></div>
 </div></div>
 
 <section class="sec" id="research">
@@ -450,11 +578,60 @@ em.j{font-style:italic}
       <h2>Electrified interfaces by design.</h2>
     </div>
     <div class="prose rv" style="margin-bottom:clamp(30px,4vw,46px)">
-      <p class="lede" style="margin-bottom:16px">Ammonia, urea and nitric acid underpin the global nitrogen economy, yet their manufacture consumes roughly 2% of world energy and emits over 1% of anthropogenic CO<sub>2</sub>.</p>
-      <p>Replacing that high-temperature chemistry with ambient, renewable-electricity-driven synthesis is limited not by thermodynamics but by <b>selectivity</b>: the desired N&ndash;H, C&ndash;N and N&ndash;O bond-forming steps must outcompete a kinetically trivial hydrogen evolution reaction.</p>
-      <p>My programme makes each of the four governing variables independently computable, independently measurable, and therefore independently designable &mdash; connecting density functional theory, molecular dynamics, machine-learned interatomic potentials and multiphysics modelling with catalyst synthesis and electrochemical measurement.</p>
-      <div class="tags" style="margin-top:22px">
-        <span class="tag">Computational materials science</span><span class="tag">Density functional theory</span><span class="tag">Molecular dynamics</span><span class="tag">Multiscale modelling</span><span class="tag">Electrocatalysis</span><span class="tag">Electrochemical reaction engineering</span><span class="tag">CO<sub>2</sub> capture &amp; conversion</span><span class="tag">Green ammonia, urea &amp; nitric acid</span><span class="tag">Two-dimensional materials</span><span class="tag">ML-assisted catalyst discovery</span>
+      <p class="lede" style="margin-bottom:16px">Two of the largest problems in sustainable energy &mdash; making chemicals without fossil heat, and storing electricity safely at scale &mdash; are both decided at an electrified interface a few nanometres thick.</p>
+      <p>My doctoral work established that in <b>electrocatalysis</b>: ammonia, urea and nitric acid underpin the global nitrogen economy, yet their manufacture consumes roughly 2% of world energy and emits over 1% of anthropogenic CO<sub>2</sub>. Replacing that chemistry with ambient, renewable-electricity-driven synthesis is limited not by thermodynamics but by <b>selectivity</b> &mdash; the desired N&ndash;H, C&ndash;N and N&ndash;O bond-forming steps must outcompete a kinetically trivial hydrogen evolution reaction.</p>
+      <p>My current work extends the same framework to <b>energy storage</b>: cathode materials and their modification, solid-state electrolytes, and the electrode&ndash;electrolyte interfaces that govern capacity retention, ion transport and stability. The governing physics is shared &mdash; coordination environment, local field, ion and solvation structure, interfacial transport &mdash; so the same multiscale toolchain applies to both.</p>
+      <p>Across both, the method is constant: density functional theory, molecular dynamics with machine-learned interatomic potentials, and multiphysics modelling, connected to synthesis and electrochemical measurement so that every prediction meets an experiment.</p>
+    </div>
+
+    <div class="ri rv" style="margin-top:clamp(30px,4vw,46px)">
+      <div class="ri-3">
+        <div class="ri-col">
+          <span class="ri-h ri-h1">Energy conversion</span>
+          <p>Ambient, renewable-electricity-driven synthesis of the molecules the nitrogen economy runs on, in place of high-temperature fossil chemistry.</p>
+          <ul>
+            <li>Green ammonia by N&#8322; and nitrate reduction</li>
+            <li>Urea by electrochemical C&#8211;N coupling</li>
+            <li>Nitric acid by selective N&#8322; oxidation</li>
+            <li>CO&#8322; capture and conversion</li>
+          </ul>
+        </div>
+        <div class="ri-col">
+          <span class="ri-h ri-h2">Energy storage</span>
+          <p>The same interfacial physics applied to the electrode&#8211;electrolyte boundary, where capacity retention and ion transport are decided.</p>
+          <ul>
+            <li>Cathode materials and surface modification</li>
+            <li>Solid-state electrolytes</li>
+            <li>Interfacial stability and ion transport</li>
+            <li>Two-dimensional and layered frameworks</li>
+          </ul>
+        </div>
+        <div class="ri-col">
+          <span class="ri-h ri-h3">Methods</span>
+          <p>A connected multiscale workflow, with experiment feeding back as retraining data rather than acting as a final check.</p>
+          <ul>
+            <li>DFT and DFT+U &#183; electronic descriptors</li>
+            <li>Molecular dynamics with machine-learned potentials</li>
+            <li>COMSOL multiphysics and transport</li>
+            <li>Uncertainty-aware Bayesian optimisation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ri-foot">
+        <span class="mono">Interests</span>
+        <span class="rk rk1">Electrocatalysis</span>
+        <span class="rk rk3">Battery materials</span>
+        <span class="rk rk3">Cathode design &amp; modification</span>
+        <span class="rk rk3">Solid-state electrolytes</span>
+        <span class="rk rk1">Electrode&ndash;electrolyte interfaces</span>
+        <span class="rk rk5">Density functional theory</span>
+        <span class="rk rk5">Molecular dynamics &amp; MLIPs</span>
+        <span class="rk rk2">Multiscale modelling</span>
+        <span class="rk rk3">Electrochemical reaction engineering</span>
+        <span class="rk rk4">CO<sub>2</sub> capture &amp; conversion</span>
+        <span class="rk rk4">Green ammonia, urea &amp; nitric acid</span>
+        <span class="rk rk2">Two-dimensional materials</span>
+        <span class="rk rk6">Machine-learning materials discovery</span>
       </div>
     </div>
 
@@ -512,7 +689,7 @@ em.j{font-style:italic}
     <div class="loop rv">
       <div class="loop-top" role="tablist" aria-label="Multiscale method layers">
         <button class="lay" role="tab" aria-selected="true" data-k="dft">
-          <span class="sc">Ã… &middot; electrons</span>
+          <span class="sc">Å &middot; electrons</span>
           <h3>DFT / DFT+U</h3>
           <p>Electronic descriptors, ligand field, adsorption, reaction networks</p>
         </button>
@@ -522,7 +699,7 @@ em.j{font-style:italic}
           <p>Double layer, cations, interfacial water, defects, stability under operation</p>
         </button>
         <button class="lay" role="tab" aria-selected="false" data-k="micro">
-          <span class="sc">Âµm &middot; transport</span>
+          <span class="sc">µm &middot; transport</span>
           <h3>Microkinetics &amp; transport</h3>
           <p>Local electric field, pH, transport, current density, predicted selectivity</p>
         </button>
@@ -627,37 +804,65 @@ em.j{font-style:italic}
   <div class="wrap">
     <div class="sh rv"><span class="mono">Experience</span><h2>Positions and education.</h2></div>
     <div class="tl rv">
-      <div class="tli"><span class="when">2025 &ndash; Present</span><div><h3>Postdoctoral Fellow</h3><p class="where"><b>University of Toronto</b> &middot; Materials Science &amp; Engineering &middot; Advisor: Prof. Chandra Veer Singh</p><p>Multiscale and machine-learning-driven modelling of two-dimensional semiconductors: high-throughput DFT, machine-learned interatomic potentials, COMSOL multiphysics, and uncertainty-aware multi-objective Bayesian optimisation.</p></div></div>
+      <div class="tli"><span class="when">2025 &ndash; Present</span><div><h3>Postdoctoral Fellow</h3><p class="where"><b>University of Toronto</b> &middot; Materials Science &amp; Engineering &middot; Advisor: Prof. Chandra Veer Singh</p><p>Multiscale, machine-learning-driven modelling across energy materials: two-dimensional semiconductors, battery cathode materials and their modification, and solid-state electrolytes and their interfaces. High-throughput DFT, machine-learned interatomic potentials, COMSOL multiphysics, and uncertainty-aware multi-objective Bayesian optimisation. Collaborative projects span oxygen reduction to H<sub>2</sub>O<sub>2</sub>, Prussian-blue-analogue cathodes, and interfacial transport modelling.</p></div></div>
       <div class="tli"><span class="when">2023 &ndash; 2024</span><div><h3>Overseas Visiting Doctoral Fellow</h3><p class="where"><b>University of Alberta</b> &middot; Chemical &amp; Materials Engineering &middot; Advisor: Prof. Samir H. Mushrif</p><p>SERB (Government of India) fellowship. Density functional theory and molecular dynamics of catalytic interfaces.</p></div></div>
       <div class="tli"><span class="when">2020 &ndash; 2025</span><div><h3>Research Fellow &middot; Ph.D. in Applied Chemistry</h3><p class="where"><b>University of Calcutta</b>, at Ramakrishna Mission Vidyamandira &middot; Advisor: Dr. Uttam Kumar Ghorai</p><p>Thesis: Electrochemical fixation of N<sub>2</sub> and CO<sub>2</sub> using cobalt phthalocyanine based catalysts. Electrocatalyst synthesis, electrochemical nitrogen and carbon fixation, and combined experimental&ndash;computational mechanistic study.</p></div></div>
+      <div class="tli"><span class="when">2019 &ndash; 2020</span><div><h3>Research Associate</h3><p class="where"><b>Pulp and Fibre Innovation Centre</b> &middot; Grasim Industries, Aditya Birla Group, India</p><p>Industrial research and development on pulp and fibre materials &mdash; an education in specification, process constraint and scale-up, between the M.Tech. and returning to doctoral research.</p></div></div>
       <div class="tli"><span class="when">2017 &ndash; 2019</span><div><h3>M.Tech. in Rubber Technology</h3><p class="where"><b>Indian Institute of Technology Kharagpur</b> &middot; Advisor: Prof. Anil K. Bhowmick</p><p>Thesis: Evaluation of graphene as a multifunctional nanofiller in rubber compounds. Research with Birla Carbon on dispersion optimisation and tire-performance analysis.</p></div></div>
       <div class="tli"><span class="when">2015 &ndash; 2017</span><div><h3>M.Sc. in Applied Chemistry</h3><p class="where"><b>University of Calcutta</b> &middot; Ramakrishna Mission Vidyamandira</p><p>Thesis: Development of copper phthalocyanine nanostructures by thermal evaporation &mdash; XPS, SEM, TEM, photoluminescence and cathodoluminescence.</p></div></div>
       <div class="tli"><span class="when">2012 &ndash; 2015</span><div><h3>B.Sc. (Honours) in Industrial Chemistry</h3><p class="where"><b>University of Calcutta</b> &middot; Ramakrishna Mission Vidyamandira</p><p>Undergraduate research at Saha Institute of Nuclear Physics on bovine serum albumin interactions with gold nanoparticles; Indian Academy of Sciences Summer Research Fellow at INST Mohali (2016) on silicon quantum dots.</p></div></div>
     </div>
 
-    <div class="sh rv" style="margin-top:clamp(40px,5.5vw,64px);margin-bottom:20px"><span class="mono">Honours</span><h2>Awards and recognition.</h2></div>
-    <div class="awards rv">
-      <div class="aw"><span class="y">2024</span><div><h4>Finalist, Best Paper Award</h4><p>Carbon Capture and Utilization &middot; International Conference, JNCASR</p></div></div>
-      <div class="aw"><span class="y">2024</span><div><h4>Certificate of Patent Award</h4><p>Patent development and commercial application &middot; Ramakrishna Mission Vidyamandira</p></div></div>
-      <div class="aw"><span class="y">2023</span><div><h4>Overseas Visiting Doctoral Fellowship</h4><p>SERB, Government of India &middot; competitive national fellowship</p></div></div>
-      <div class="aw"><span class="y">2023</span><div><h4>Best Poster Award</h4><p>Sustainable Functional Materials and Processes &middot; IIT Kharagpur</p></div></div>
-      <a class="aw" href="https://www.youtube.com/watch?v=p-5K89prdG0" target="_blank" rel="noopener"><span class="y">2023</span><div><h4>Emerging Scholar recognition &nearr;</h4><p>ACS Sustainable Chemistry &amp; Engineering &middot; watch the feature</p></div></a>
-      <div class="aw"><span class="y">2021</span><div><h4>Best Poster Award</h4><p>Chemical Science Symposium &middot; Royal Society of Chemistry</p></div></div>
-      <div class="aw"><span class="y">2021</span><div><h4>Acharya Prafulla Chandra Ray Research Excellence Award</h4><p>Indian Chemical Society</p></div></div>
-      <div class="aw"><span class="y">2017</span><div><h4>GATE All India Rank 63</h4><p>UGC Postgraduate Merit Scholarship &middot; second rank in University, Chemical Sciences</p></div></div>
-    </div>
-
     <div class="sh rv" style="margin-top:clamp(40px,5.5vw,64px);margin-bottom:20px"><span class="mono">Technical expertise</span><h2>Methods and instrumentation.</h2></div>
     <div class="skills rv">
       <div class="sk"><h3>Computational</h3><div class="tagrow"><span>VASP</span><span>DFT / DFT+U</span><span>MACE</span><span>GRACE</span><span>MLIPs</span><span>GROMACS</span><span>ab initio MD</span><span>COMSOL Multiphysics</span><span>VMD</span><span>Bader charge</span><span>DOS</span><span>Charge-density difference</span><span>Bayesian optimisation</span><span>Active learning</span><span>Python</span><span>Linux / HPC</span></div></div>
-      <div class="sk"><h3>Electrochemical &amp; synthetic</h3><div class="tagrow"><span>Solvothermal synthesis</span><span>Thermal evaporation</span><span>Nanotube fabrication</span><span>Heterostructures</span><span>Electrochemical workstation</span><span>RDE / RRDE</span><span>EIS</span><span>H-cell</span><span>Flow cell</span><span>Isotope-labelled quantification</span></div></div>
+      <div class="sk"><h3>Electrochemical &amp; synthetic</h3><div class="tagrow"><span>Solvothermal synthesis</span><span>Thermal evaporation</span><span>Nanotube fabrication</span><span>Heterostructures</span><span>Cathode materials</span><span>Solid-state electrolytes</span><span>Electrochemical workstation</span><span>RDE / RRDE</span><span>EIS</span><span>H-cell</span><span>Flow cell</span><span>Coin-cell assembly</span><span>Isotope-labelled quantification</span></div></div>
       <div class="sk"><h3>Characterisation</h3><div class="tagrow"><span>XRD</span><span>XPS</span><span>XANES / EXAFS</span><span>Raman</span><span>FTIR</span><span>UV-Vis</span><span>Photoluminescence</span><span>BET</span><span>SEM</span><span>TEM</span><span>TGA</span><span>DSC</span><span>DMA</span><span>NMR</span><span>Ion chromatography</span></div></div>
       <div class="sk"><h3>Analysis software</h3><div class="tagrow"><span>Athena</span><span>Artemis</span><span>Hephaestus</span><span>CasaXPS</span><span>OriginPro</span></div></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="teaching">
+<section class="sec" id="awards">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="mono">Honours</span>
+      <h2>Awards and achievements.</h2>
+      <p>Ten awards across research excellence, oral and poster presentation, patent development and national fellowship.</p>
+    </div>
+    <div class="awards rv">
+      <div class="aw"><span class="y">2024</span><div><h4>Finalist, Best Paper Award in Carbon Capture and Utilization</h4><p>International Conference on Carbon Capture and Utilization &middot; JNCASR</p></div></div>
+      <div class="aw"><span class="y">2024</span><div><h4>Certificate of Patent Award</h4><p>For patent development and commercial application &middot; Ramakrishna Mission Vidyamandira</p></div></div>
+      <div class="aw"><span class="y">2023</span><div><h4>Overseas Visiting Doctoral Fellowship</h4><p>SERB, Government of India &middot; competitive national fellowship for doctoral research abroad</p></div></div>
+      <div class="aw"><span class="y">2023</span><div><h4>Best Poster Award</h4><p>Sustainable Functional Materials and Processes &middot; IIT Kharagpur</p></div></div>
+      <a class="aw" href="https://www.youtube.com/watch?v=p-5K89prdG0" target="_blank" rel="noopener"><span class="y">2023</span><div><h4>Emerging Scholar recognition &nearr;</h4><p>ACS Sustainable Chemistry &amp; Engineering &middot; watch the feature</p></div></a>
+      <div class="aw"><span class="y">2021</span><div><h4>Acharya Prafulla Chandra Ray Award of Excellence</h4><p>Oral presentation &middot; Indian Chemical Society, Kolkata &middot; 160th birth anniversary celebration, 1&ndash;8 August 2021</p><span class="cited">&ldquo;Large scale synthesis of metal phthalocyanine nanostructures: efficient electrocatalyst for ammonia synthesis under ambient conditions&rdquo;</span></div></div>
+      <div class="aw"><span class="y">2021</span><div><h4>Best Oral Presentation Award</h4><p>2nd National Conference on Materials &amp; Devices (NCMD-2021) &middot; Teerthanker Mahaveer University, Moradabad</p><span class="cited">&ldquo;Cobalt phthalocyanine nanotubes: efficient electrocatalyst for ammonia synthesis at STP&rdquo;</span></div></div>
+      <div class="aw"><span class="y">2021</span><div><h4>Chemical Science Outstanding Poster Presentation Prize</h4><p>Chemical Science Symposium 2021 &middot; Royal Society of Chemistry</p></div></div>
+      <div class="aw"><span class="y">2017</span><div><h4>GATE All India Rank 63</h4><p>UGC Postgraduate Merit Scholarship &middot; second rank in the University, Chemical Sciences category</p></div></div>
+      <div class="aw"><span class="y">2016</span><div><h4>Summer Research Fellowship</h4><p>Indian Academy of Sciences &middot; Institute of Nano Science and Technology, Mohali</p></div></div>
+    </div>
+
+    <div class="sh rv" style="margin-top:clamp(40px,5.5vw,64px);margin-bottom:20px">
+      <span class="mono">Conferences</span>
+      <h2>Talks, posters and meetings.</h2>
+      <p>Presentations across Canada and India, from national materials conferences to the Canadian Chemistry and Chemical Engineering Conference.</p>
+    </div>
+    <div class="conf rv">
+      <div class="cf"><span class="y">2026</span><div><h4>Canadian Chemistry and Chemical Engineering Conference</h4><p class="loc">Chemical Institute of Canada</p><span class="ttl">&ldquo;Screening methodology for electrochemical urea synthesis&rdquo; &mdash; descriptor-based catalyst selection from stability through adsorption to selectivity</span></div><span class="role-b rb-inv">Talk</span></div>
+      <div class="cf"><span class="y">2025</span><div><h4>SCGCh / CSChE 2025 &mdash; Chemical engineering in an AI world</h4><p class="loc">Montr&eacute;al, Qu&eacute;bec &middot; 5&ndash;7 October 2025</p></div><span class="role-b rb-att">Attended</span></div>
+      <div class="cf"><span class="y">2024</span><div><h4>International Conference on Carbon Capture and Utilization</h4><p class="loc">JNCASR, Bengaluru</p><span class="ttl">Finalist, Best Paper Award in Carbon Capture and Utilization</span></div><span class="role-b rb-award">Award</span></div>
+      <div class="cf"><span class="y">2023</span><div><h4>Sustainable Functional Materials and Processes</h4><p class="loc">IIT Kharagpur</p><span class="ttl">Best Poster Award</span></div><span class="role-b rb-post">Poster</span></div>
+      <div class="cf"><span class="y">2022</span><div><h4>Conference on Advances in Chemical Engineering and Emerging areas (CACEE)</h4><p class="loc">Tata Institute of Fundamental Research, Mumbai</p></div><span class="role-b rb-att">Attended</span></div>
+      <div class="cf"><span class="y">2021</span><div><h4>2nd National Conference on Materials &amp; Devices (NCMD-2021)</h4><p class="loc">Teerthanker Mahaveer University, Moradabad &middot; 16&ndash;17 September 2021</p><span class="ttl">&ldquo;Cobalt phthalocyanine nanotubes: efficient electrocatalyst for ammonia synthesis at STP&rdquo; &mdash; Best Oral Presentation Award</span></div><span class="role-b rb-oral">Oral</span></div>
+      <div class="cf"><span class="y">2021</span><div><h4>Acharya Prafulla Chandra Ray 160th Birth Anniversary Celebration</h4><p class="loc">Indian Chemical Society, Kolkata &middot; 1&ndash;8 August 2021</p><span class="ttl">&ldquo;Large scale synthesis of metal phthalocyanine nanostructures: efficient electrocatalyst for ammonia synthesis under ambient conditions&rdquo; &mdash; Award of Excellence</span></div><span class="role-b rb-oral">Oral</span></div>
+      <div class="cf"><span class="y">2021</span><div><h4>Chemical Science Symposium 2021</h4><p class="loc">Royal Society of Chemistry</p><span class="ttl">Chemical Science Outstanding Poster Presentation Prize</span></div><span class="role-b rb-post">Poster</span></div>
+      <div class="cf"><span class="y">2021</span><div><h4>International Conference on Nanoscience and Nanotechnology (ICONN)</h4><p class="loc">SRM Institute of Science and Technology</p><span class="ttl">&ldquo;Synthesis of graphene&ndash;Alq<sub>3</sub> nanocomposite as cold cathode&rdquo;</span></div><span class="role-b rb-post">Poster</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-w" id="teaching">
   <div class="wrap">
     <div class="sh rv">
       <span class="mono">Teaching</span>
@@ -695,12 +900,12 @@ em.j{font-style:italic}
   </div>
 </section>
 
-<section class="sec sec-w" id="gallery">
+<section class="sec" id="gallery">
   <div class="wrap">
     <div class="sh rv">
       <span class="mono">Gallery</span>
       <h2>Conferences, teaching, and the people it happened with.</h2>
-      <p>Research is not only papers. These are the rooms, laboratories and collaborators behind the work &mdash; from the unit operations laboratory in Toronto to conference halls in Montreal and Mumbai.</p>
+      <p>Research is not only papers. These are the rooms, laboratories and collaborators behind the work &mdash; from the unit operations laboratory in Toronto to conference halls in Montr&eacute;al and Mumbai.</p>
     </div>
     <div class="filters rv" id="gfilters">
       <button class="fbtn" aria-pressed="true" data-g="all">All <em id="g-all"></em></button>
@@ -799,26 +1004,26 @@ em.j{font-style:italic}
   /* ---- publications ---- */
   var P=[
     {t:"Emerging 2D materials for green ammonia electrosynthesis: integrating experimental, computation, and machine learning strategies toward commercialization",a:"<b>Sourav Paul</b>, P. S. Maiti, K. Sahoo, B. Keshari, T. K. Dhar, U. K. Ghorai",j:"ChemSusChem",v:"2026, 19, e202502111",doi:"10.1002/cssc.202502111",r:["first","review"],g:["ammonia"]},
-    {t:"Local enhanced electric field assisted electrocatalytic nitrate reduction to ammonia using Ni(TCNQ)â‚‚/NF nanostructures",a:"N. Mukherjee, A. Adalder, <b>Sourav Paul</b>, et al.",j:"Advanced Functional Materials",v:"2026, 36 (13), e19797",doi:"10.1002/adfm.202519797",r:[],g:["ammonia"]},
-    {t:"Morphology dependent Nâ‚‚ reduction on Cuâ‚‚O: combined experimental and computational study for efficient ammonia electrocatalytic synthesis",a:"<b>Sourav Paul</b>, A. Gain, A. Adalder, S. Pal, S. H. Mushrif, U. K. Ghorai",j:"Small",v:"2025, 2505121",doi:"10.1002/smll.202505121",r:["first"],g:["ammonia"]},
-    {t:"Nanolignin functional separators for flexible lithiumâ€“sulfur batteries with enhanced performance",a:"E. Bellinetto, V. K. Tomer, R. Malik, <b>Sourav Paul</b>, et al.",j:"Energy & Environmental Materials",v:"e70190",doi:"",r:[],g:["other"]},
-    {t:"Low-frequency hydromechanical energy triggered piezocatalytic activity of MoSâ‚‚ nanosheets for sustainable removal of Cr(VI)",a:"T. Ghosh, A. Pathak, S. Dhang, J. Mondal, <b>Sourav Paul</b>, et al.",j:"Nano Energy",v:"146, 111484",doi:"",r:[],g:["other"]},
+    {t:"Local enhanced electric field assisted electrocatalytic nitrate reduction to ammonia using Ni(TCNQ)₂/NF nanostructures",a:"N. Mukherjee, A. Adalder, <b>Sourav Paul</b>, et al.",j:"Advanced Functional Materials",v:"2026, 36 (13), e19797",doi:"10.1002/adfm.202519797",r:[],g:["ammonia"]},
+    {t:"Morphology dependent N₂ reduction on Cu₂O: combined experimental and computational study for efficient ammonia electrocatalytic synthesis",a:"<b>Sourav Paul</b>, A. Gain, A. Adalder, S. Pal, S. H. Mushrif, U. K. Ghorai",j:"Small",v:"2025, 2505121",doi:"10.1002/smll.202505121",r:["first"],g:["ammonia"]},
+    {t:"Nanolignin functional separators for flexible lithium–sulfur batteries with enhanced performance",a:"E. Bellinetto, V. K. Tomer, R. Malik, <b>Sourav Paul</b>, et al.",j:"Energy & Environmental Materials",v:"e70190",doi:"",r:[],g:["other"]},
+    {t:"Low-frequency hydromechanical energy triggered piezocatalytic activity of MoS₂ nanosheets for sustainable removal of Cr(VI)",a:"T. Ghosh, A. Pathak, S. Dhang, J. Mondal, <b>Sourav Paul</b>, et al.",j:"Nano Energy",v:"146, 111484",doi:"",r:[],g:["other"]},
     {t:"Boosting selective nitrogen oxidation to nitric acid by synergizing cobalt phthalocyanine on carbon nitride surface",a:"<b>Sourav Paul</b>, A. Adalder, N. Barman, R. Thapa, A. Bera, K. Mitra, U. K. Ghorai",j:"Advanced Functional Materials",v:"2024, 34, 2408314",doi:"10.1002/adfm.202408314",r:["first"],g:["nitric"]},
     {t:"Iron phthalocyanine hollow architecture enabled ammonia production via nitrate reduction to achieve 100% Faradaic efficiency",a:"S. Sarkar, A. Adalder, <b>Sourav Paul</b>, et al.",j:"Applied Catalysis B: Environmental",v:"2024, 343, 123580",doi:"",r:[],g:["ammonia"]},
-    {t:"Electrocatalytic nitrogen reduction to ammonia at low potential using a phenalenyl based iron(III) complex",a:"S. R. Waghela, A. Adalder, J. Bhattacharjee, N. Mukherjee, <b>Sourav Paul</b>, U. K. Ghorai",j:"Dalton Transactions",v:"2024, 53, 16154â€“16158",doi:"10.1039/D4DT01745E",r:[],g:["ammonia"]},
-    {t:"Dual metal site-mediated efficient Câ€“N coupling toward electrochemical urea synthesis",a:"<b>Sourav Paul</b>, S. Sarkar, A. Adalder, A. Banerjee, U. K. Ghorai",j:"Journal of Materials Chemistry A",v:"2023, 11, 13249â€“13254",doi:"10.1039/D3TA01011B",r:["first"],g:["urea"]},
-    {t:"Strengthening the metal center of Coâ€“Nâ‚„ active sites in a 1Dâ€“2D heterostructure for nitrate and nitrogen reduction reaction to ammonia",a:"<b>Sourav Paul</b>, S. Sarkar, A. Adalder, S. Kapse, R. Thapa, U. K. Ghorai",j:"ACS Sustainable Chemistry & Engineering",v:"2023, 11, 6191â€“6200",doi:"10.1021/acssuschemeng.2c07114",r:["first"],g:["ammonia"]},
-    {t:"1D/2D interface engineering of a CoPcâ€“Câ‚ƒNâ‚„ heterostructure for boosting the nitrogen reduction reaction to NHâ‚ƒ",a:"<b>Sourav Paul</b>, S. Sarkar, et al.",j:"Dalton Transactions",v:"2023, 52, 15360â€“15364",doi:"10.1039/D3DT01790G",r:["first"],g:["ammonia"]},
-    {t:"Progress of electrocatalytic urea synthesis: strategic design, reactor engineering, mechanistic details and techno-commercial study",a:"<b>Sourav Paul</b>, A. Adalder, U. K. Ghorai",j:"Materials Chemistry Frontiers",v:"2023, 7, 3820â€“3854",doi:"10.1039/D3QM00433C",r:["first","review"],g:["urea"]},
-    {t:"Controlling the metalâ€“ligand coordination environment of manganese phthalocyanine in a 1Dâ€“2D heterostructure for enhancing nitrate reduction to ammonia",a:"A. Adalder, <b>Sourav Paul</b>, N. Barman, et al.",j:"ACS Catalysis",v:"2023, 13, 13516â€“13527",doi:"",r:[],g:["ammonia"]},
-    {t:"Progress of electrochemical synthesis of nitric acid: catalyst design, mechanistic insights, protocol and challenges",a:"A. Adalder, <b>Sourav Paul</b>, U. K. Ghorai",j:"Journal of Materials Chemistry A",v:"2023, 11, 10125â€“10148",doi:"10.1039/D2TA08928A",r:["review"],g:["nitric"]},
-    {t:"Selective electrocatalytic oxidation of nitrogen to nitric acid using manganese phthalocyanine",a:"A. Adalder, <b>Sourav Paul</b>, et al.",j:"ACS Applied Materials & Interfaces",v:"2023, 15, 34642â€“34650",doi:"",r:[],g:["nitric"]},
+    {t:"Electrocatalytic nitrogen reduction to ammonia at low potential using a phenalenyl based iron(III) complex",a:"S. R. Waghela, A. Adalder, J. Bhattacharjee, N. Mukherjee, <b>Sourav Paul</b>, U. K. Ghorai",j:"Dalton Transactions",v:"2024, 53, 16154–16158",doi:"10.1039/D4DT01745E",r:[],g:["ammonia"]},
+    {t:"Dual metal site-mediated efficient C–N coupling toward electrochemical urea synthesis",a:"<b>Sourav Paul</b>, S. Sarkar, A. Adalder, A. Banerjee, U. K. Ghorai",j:"Journal of Materials Chemistry A",v:"2023, 11, 13249–13254",doi:"10.1039/D3TA01011B",r:["first"],g:["urea"]},
+    {t:"Strengthening the metal center of Co–N₄ active sites in a 1D–2D heterostructure for nitrate and nitrogen reduction reaction to ammonia",a:"<b>Sourav Paul</b>, S. Sarkar, A. Adalder, S. Kapse, R. Thapa, U. K. Ghorai",j:"ACS Sustainable Chemistry & Engineering",v:"2023, 11, 6191–6200",doi:"10.1021/acssuschemeng.2c07114",r:["first"],g:["ammonia"]},
+    {t:"1D/2D interface engineering of a CoPc–C₃N₄ heterostructure for boosting the nitrogen reduction reaction to NH₃",a:"<b>Sourav Paul</b>, S. Sarkar, et al.",j:"Dalton Transactions",v:"2023, 52, 15360–15364",doi:"10.1039/D3DT01790G",r:["first"],g:["ammonia"]},
+    {t:"Progress of electrocatalytic urea synthesis: strategic design, reactor engineering, mechanistic details and techno-commercial study",a:"<b>Sourav Paul</b>, A. Adalder, U. K. Ghorai",j:"Materials Chemistry Frontiers",v:"2023, 7, 3820–3854",doi:"10.1039/D3QM00433C",r:["first","review"],g:["urea"]},
+    {t:"Controlling the metal–ligand coordination environment of manganese phthalocyanine in a 1D–2D heterostructure for enhancing nitrate reduction to ammonia",a:"A. Adalder, <b>Sourav Paul</b>, N. Barman, et al.",j:"ACS Catalysis",v:"2023, 13, 13516–13527",doi:"",r:[],g:["ammonia"]},
+    {t:"Progress of electrochemical synthesis of nitric acid: catalyst design, mechanistic insights, protocol and challenges",a:"A. Adalder, <b>Sourav Paul</b>, U. K. Ghorai",j:"Journal of Materials Chemistry A",v:"2023, 11, 10125–10148",doi:"10.1039/D2TA08928A",r:["review"],g:["nitric"]},
+    {t:"Selective electrocatalytic oxidation of nitrogen to nitric acid using manganese phthalocyanine",a:"A. Adalder, <b>Sourav Paul</b>, et al.",j:"ACS Applied Materials & Interfaces",v:"2023, 15, 34642–34650",doi:"",r:[],g:["nitric"]},
     {t:"Understanding the site-selective electrocatalytic co-reduction mechanism for green urea synthesis using copper phthalocyanine nanotubes",a:"J. Mukherjee, <b>Sourav Paul</b>, A. Adalder, S. Kapse, R. Thapa, S. Mandal, B. Ghorai, S. Sarkar, U. K. Ghorai",j:"Advanced Functional Materials",v:"2022, 32, 2200882",doi:"10.1002/adfm.202200882",r:[],g:["urea"]},
     {t:"Graphene-wrapped nickel phthalocyanine nanohybrid: efficient electrocatalyst for nitrogen reduction reaction",a:"S. Murmu, <b>Sourav Paul</b>, et al.",j:"Catalysis Today",v:"2023",doi:"10.1016/j.cattod.2022.10.020",r:[],g:["ammonia"]},
-    {t:"Alqâ‚ƒâ€“graphene bifunctional nanocomposite for cold cathode and luminescent anode in field emission display applications",a:"<b>Sourav Paul</b>, A. Adalder, et al.",j:"Journal of Electronic Materials",v:"2022",doi:"10.1007/s11664-022-10009-x",r:["first"],g:["other"]},
-    {t:"Upconversion luminescence and time decay study of Ybâ€“Er doped BaWOâ‚„ nanophosphor",a:"A. De, A. K. Dey, B. Samanta, S. Sur, <b>Sourav Paul</b>, et al.",j:"Journal of Materials Science: Materials in Electronics",v:"2022, 33, 9641â€“9649",doi:"10.1007/s10854-021-07607-6",r:[],g:["other"]},
-    {t:"Scalable production of cobalt phthalocyanine nanotubes: efficient and robust hollow electrocatalyst for ammonia synthesis at room temperature",a:"U. K. Ghorai, <b>Sourav Paul</b>, B. Ghorai, A. Adalder, S. Kapse, R. Thapa, A. Nagendra, A. Gain",j:"ACS Nano",v:"2021, 15, 5230â€“5239",doi:"10.1021/acsnano.0c10596",r:[],g:["ammonia"]},
-    {t:"Unveiling the genesis of the high catalytic activity in nickel phthalocyanine for electrochemical ammonia synthesis",a:"S. Murmu, <b>Sourav Paul</b>, et al.",j:"Journal of Materials Chemistry A",v:"2021, 9, 14477â€“14484",doi:"10.1039/D1TA00766A",r:[],g:["ammonia"]}
+    {t:"Alq₃–graphene bifunctional nanocomposite for cold cathode and luminescent anode in field emission display applications",a:"<b>Sourav Paul</b>, A. Adalder, et al.",j:"Journal of Electronic Materials",v:"2022",doi:"10.1007/s11664-022-10009-x",r:["first"],g:["other"]},
+    {t:"Upconversion luminescence and time decay study of Yb–Er doped BaWO₄ nanophosphor",a:"A. De, A. K. Dey, B. Samanta, S. Sur, <b>Sourav Paul</b>, et al.",j:"Journal of Materials Science: Materials in Electronics",v:"2022, 33, 9641–9649",doi:"10.1007/s10854-021-07607-6",r:[],g:["other"]},
+    {t:"Scalable production of cobalt phthalocyanine nanotubes: efficient and robust hollow electrocatalyst for ammonia synthesis at room temperature",a:"U. K. Ghorai, <b>Sourav Paul</b>, B. Ghorai, A. Adalder, S. Kapse, R. Thapa, A. Nagendra, A. Gain",j:"ACS Nano",v:"2021, 15, 5230–5239",doi:"10.1021/acsnano.0c10596",r:[],g:["ammonia"]},
+    {t:"Unveiling the genesis of the high catalytic activity in nickel phthalocyanine for electrochemical ammonia synthesis",a:"S. Murmu, <b>Sourav Paul</b>, et al.",j:"Journal of Materials Chemistry A",v:"2021, 9, 14477–14484",doi:"10.1039/D1TA00766A",r:[],g:["ammonia"]}
   ];
 
   var list=document.getElementById("publist");
@@ -855,28 +1060,28 @@ em.j{font-style:italic}
      To add your photos: drop the files into an "images" folder beside this
      page using exactly the filenames in `src` below. Nothing else to change. */
   var G=[
-    {src:"images/01-teaching-poster.jpg", g:"teaching", tag:"Teaching Â· University of Toronto",
+    {src:"images/01-teaching-poster.jpg", g:"teaching", tag:"Teaching · University of Toronto",
      t:"Undergraduate unit operations laboratory",
-     s:"Final project presentation â€” the influence of recycle on metallurgical leaching."},
-    {src:"images/02-teaching-cohort.jpg", g:"teaching", tag:"Teaching Â· University of Toronto",
+     s:"Final project presentation — the influence of recycle on metallurgical leaching."},
+    {src:"images/02-teaching-cohort.jpg", g:"teaching", tag:"Teaching · University of Toronto",
      t:"The full teaching cohort",
      s:"Chemical engineering undergraduates at the end of the unit operations term."},
-    {src:"images/14-csche-2025-c.jpg", g:"conf", tag:"CSChE 2025 Â· MontrÃ©al",
+    {src:"images/14-csche-2025-c.jpg", g:"conf", tag:"CSChE 2025 · Montréal",
      t:"Chemical engineering in an AI world",
-     s:"SCGCh / CSChE 2025, 5â€“7 October â€” the year's theme was AI as a pioneer of sustainability."},
-    {src:"images/03-csche-2025-a.jpg", g:"conf", tag:"CSChE 2025 Â· MontrÃ©al",
+     s:"SCGCh / CSChE 2025, 5–7 October — the year's theme was AI as a pioneer of sustainability."},
+    {src:"images/03-csche-2025-a.jpg", g:"conf", tag:"CSChE 2025 · Montréal",
      t:"Canadian Chemistry and Chemical Engineering Conference",
      s:"Chemical Institute of Canada."},
-    {src:"images/04-csche-2025-b.jpg", g:"conf", tag:"CSChE 2025 Â· MontrÃ©al",
+    {src:"images/04-csche-2025-b.jpg", g:"conf", tag:"CSChE 2025 · Montréal",
      t:"Sponsors and the Canadian Journal of Chemical Engineering",
      s:"With the University of Toronto among the silver sponsors."},
-    {src:"images/05-csche-2026.jpg", g:"conf", tag:"CSChE 2026 Â· Invited talk",
+    {src:"images/05-csche-2026.jpg", g:"conf", tag:"CSChE 2026 · Invited talk",
      t:"Screening methodology for electrochemical urea synthesis",
-     s:"The descriptor funnel â€” from thermodynamic and aggregation stability, through adsorption and activity, to a selected catalyst."},
+     s:"The descriptor funnel — from thermodynamic and aggregation stability, through adsorption and activity, to a selected catalyst."},
     {src:"images/06-polanyi.jpg", g:"conf", tag:"CSChE 2026",
      t:"With Nobel Laureate John C. Polanyi",
-     s:"Chemistry, 1986 â€” University of Toronto."},
-    {src:"images/07-roberts.jpg", g:"conf", tag:"CACEE 2022 Â· TIFR Mumbai",
+     s:"Chemistry, 1986 — University of Toronto."},
+    {src:"images/07-roberts.jpg", g:"conf", tag:"CACEE 2022 · TIFR Mumbai",
      t:"With Nobel Laureate Richard J. Roberts",
      s:"Physiology or Medicine, 1993."},
     {src:"images/08-duari.jpg", g:"people", tag:"Outreach",
@@ -981,4 +1186,3 @@ em.j{font-style:italic}
 
 </body>
 </html>
-
