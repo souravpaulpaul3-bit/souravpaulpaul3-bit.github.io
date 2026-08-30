@@ -81,6 +81,38 @@ em.j{font-style:italic}
 @keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .hcta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;opacity:0;animation:fu .9s var(--ez) .54s forwards}
 
+/* PORTRAIT */
+.hero-grid{display:grid;grid-template-columns:1.42fr .82fr;gap:clamp(26px,4.5vw,60px);align-items:center}
+.portrait{margin:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface);opacity:0;animation:fu 1s var(--ez) .5s forwards;box-shadow:0 26px 56px -40px rgba(14,26,43,.5)}
+.portrait img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;object-position:center 22%}
+.portrait .pfall{aspect-ratio:4/5;display:grid;place-items:center;gap:10px;background:var(--blue);color:#fff;text-align:center;padding:24px}
+.portrait .pfall b{font-family:var(--d);font-size:54px;font-weight:500;letter-spacing:-.04em;line-height:1}
+.portrait .pfall span{font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.portrait figcaption{padding:12px 15px;border-top:1px solid var(--rule);font-family:var(--m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* AFFILIATIONS */
+.afil{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface);padding:clamp(22px,3vw,32px) 0}
+.afil-lbl{font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;display:block}
+.afil-in{display:flex;flex-wrap:wrap}
+.af{flex:1 1 165px;padding:6px 18px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:9px;min-width:0}
+.af:first-child{border-left:0;padding-left:0}
+.af .lg{height:40px;display:flex;align-items:center}
+.af .lg img{max-height:40px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .3s var(--ez),opacity .3s var(--ez)}
+.af:hover .lg img{filter:none;opacity:1}
+.af .lg .mono-badge{width:38px;height:38px;border:1.5px solid var(--rule-2);border-radius:3px;display:grid;place-items:center;font-family:var(--d);font-size:14px;font-weight:600;color:var(--blue);letter-spacing:-.02em;transition:border-color .3s var(--ez)}
+.af:hover .lg .mono-badge{border-color:var(--blue)}
+.af b{font-family:var(--d);font-size:14.5px;font-weight:500;letter-spacing:-.014em;line-height:1.25}
+.af span{font-family:var(--m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* NEWS */
+.news{border-top:1px solid var(--ink)}
+.nrow{display:grid;grid-template-columns:104px 1fr;gap:20px;padding:13px 0;border-bottom:1px solid var(--rule);transition:background .25s var(--ez),padding-left .25s var(--ez)}
+.nrow:hover{background:var(--blue-soft);padding-left:8px}
+.nrow .nd{font-family:var(--m);font-size:11px;color:var(--blue);padding-top:2px;white-space:nowrap}
+.nrow p{font-size:15px;line-height:1.5;color:var(--ink)}
+.nrow p em{font-style:italic;color:var(--ink-2)}
+.nrow p b{font-weight:600}
+
 /* METRICS */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:clamp(30px,4.5vw,48px);opacity:0;animation:fu 1s var(--ez) .64s forwards}
 .metric{background:var(--surface);padding:20px 18px;transition:background .35s var(--ez)}
@@ -281,6 +313,9 @@ em.j{font-style:italic}
 
 @media (max-width:900px){
   .gal{columns:2}
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .portrait{max-width:300px}
+  .af{flex:1 1 132px;padding:6px 14px}
   .metrics{grid-template-columns:1fr 1fr}
   .loop-top{grid-template-columns:1fr 1fr}
   .loop-detail{grid-template-columns:1fr}
@@ -291,6 +326,9 @@ em.j{font-style:italic}
 @media (max-width:640px){
   .nav-links{display:none}
   .gal{columns:1}
+  .af{flex:1 1 100%;border-left:0;padding:10px 0;border-top:1px solid var(--rule)}
+  .af:first-child{border-top:0}
+  .nrow{grid-template-columns:1fr;gap:4px}
   .loop-top{grid-template-columns:1fr}
   .th{grid-template-columns:1fr;gap:8px}
   .clist,.refs{grid-template-columns:1fr}
@@ -308,7 +346,7 @@ em.j{font-style:italic}
   <div class="wrap nav-in">
     <a class="brand" href="#top"><i></i> Sourav Paul</a>
     <div class="nav-links">
-      <a href="#research">Research</a><a href="#loop">Method</a><a href="#pubs">Publications</a><a href="#experience">Experience</a><a href="#teaching">Teaching</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      <a href="#news">News</a><a href="#research">Research</a><a href="#loop">Method</a><a href="#pubs">Publications</a><a href="#experience">Experience</a><a href="#teaching">Teaching</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
     </div>
     <!-- TODO: replace # with your CV PDF link -->
     <a class="btn btn-p btn-s" href="#"><span>Curriculum Vitae</span></a>
@@ -317,6 +355,8 @@ em.j{font-style:italic}
 
 <header class="hero" id="top">
   <div class="wrap">
+   <div class="hero-grid">
+    <div class="hero-l">
     <p class="eyebrow mono"><i></i> Postdoctoral Fellow &middot; University of Toronto</p>
     <h1><span class="ln"><i>Sourav Paul,</i></span><span class="ln"><i>Ph.D.</i></span></h1>
     <p class="role">Computational and experimental chemist working on <b>electrocatalysis and the electrified interface</b>. Department of Materials Science &amp; Engineering, University of Toronto, with Prof. Chandra Veer Singh.</p>
@@ -330,6 +370,13 @@ em.j{font-style:italic}
       <a class="btn btn-g" href="#"><span>ORCID</span></a>
       <a class="btn btn-g" href="#pubs"><span>Publications</span></a>
     </div>
+    </div>
+
+    <figure class="portrait">
+      <img id="portraitImg" src="images/portrait.jpg" alt="Sourav Paul">
+      <figcaption>Toronto, Ontario &middot; Canada</figcaption>
+    </figure>
+   </div>
 
     <div class="metrics">
       <div class="metric"><b>21</b><span>Peer-reviewed articles</span></div>
@@ -339,6 +386,53 @@ em.j{font-style:italic}
     </div>
   </div>
 </header>
+
+<section class="afil">
+  <div class="wrap">
+    <span class="afil-lbl">Research training and affiliations</span>
+    <div class="afil-in">
+      <div class="af">
+        <span class="lg"><img src="logos/utoronto.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;UT&lt;/span&gt;'"></span>
+        <b>University of Toronto</b><span>Postdoctoral &middot; 2025&ndash;</span>
+      </div>
+      <div class="af">
+        <span class="lg"><img src="logos/ualberta.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;UA&lt;/span&gt;'"></span>
+        <b>University of Alberta</b><span>SERB Fellow &middot; 2023&ndash;24</span>
+      </div>
+      <div class="af">
+        <span class="lg"><img src="logos/calcutta.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;CU&lt;/span&gt;'"></span>
+        <b>University of Calcutta</b><span>Ph.D. &middot; 2020&ndash;25</span>
+      </div>
+      <div class="af">
+        <span class="lg"><img src="logos/vidyamandira.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;RKMV&lt;/span&gt;'"></span>
+        <b>RKM Vidyamandira</b><span>Doctoral research</span>
+      </div>
+      <div class="af">
+        <span class="lg"><img src="logos/iitkgp.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;IIT&lt;/span&gt;'"></span>
+        <b>IIT Kharagpur</b><span>M.Tech. &middot; 2017&ndash;19</span>
+      </div>
+      <div class="af">
+        <span class="lg"><img src="logos/serb.png" alt="" onerror="this.outerHTML='&lt;span class=\'mono-badge\'&gt;SERB&lt;/span&gt;'"></span>
+        <b>SERB, Govt. of India</b><span>Overseas Fellowship</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="news" style="padding-top:clamp(44px,6vw,72px);padding-bottom:clamp(44px,6vw,72px)">
+  <div class="wrap">
+    <div class="sh rv" style="margin-bottom:22px"><span class="mono">Recent</span><h2>News and updates.</h2></div>
+    <div class="news rv">
+      <div class="nrow"><span class="nd">2026</span><p>Invited review on <b>emerging 2D materials for green ammonia electrosynthesis</b> published in <em>ChemSusChem</em>.</p></div>
+      <div class="nrow"><span class="nd">2026</span><p>Work on local-field-assisted nitrate reduction using Ni(TCNQ)<sub>2</sub> nanostructures published in <em>Advanced Functional Materials</em>.</p></div>
+      <div class="nrow"><span class="nd">2025</span><p>Joined the <b>University of Toronto</b> as a Postdoctoral Fellow in Materials Science &amp; Engineering with Prof. Chandra Veer Singh.</p></div>
+      <div class="nrow"><span class="nd">2025</span><p>Presented catalyst screening for electrochemical urea synthesis at the <b>Canadian Chemistry and Chemical Engineering Conference</b>, October 2025.</p></div>
+      <div class="nrow"><span class="nd">2025</span><p>Morphology-dependent N<sub>2</sub> reduction on Cu<sub>2</sub>O published in <em>Small</em>.</p></div>
+      <div class="nrow"><span class="nd">2024</span><p>Named a <b>finalist for the Best Paper Award</b> in Carbon Capture and Utilization at the international conference held at JNCASR.</p></div>
+      <div class="nrow"><span class="nd">2024</span><p>Selective nitrogen oxidation to nitric acid published in <em>Advanced Functional Materials</em>.</p></div>
+    </div>
+  </div>
+</section>
 
 <div class="wrap"><div class="scalerule" aria-hidden="true">
   <div data-l="Ã… Â· electrons"></div><div></div><div></div><div></div>
@@ -660,6 +754,12 @@ em.j{font-style:italic}
   var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var nav=document.getElementById("nav");
   window.addEventListener("scroll",function(){nav.classList.toggle("stuck",window.scrollY>8);},{passive:true});
+
+  /* portrait fallback until images/portrait.jpg is added */
+  var pimg=document.getElementById("portraitImg");
+  if(pimg){ pimg.addEventListener("error",function(){
+    pimg.outerHTML='<span class="pfall"><b>SP</b><span>Add images/portrait.jpg</span></span>';
+  }); }
 
   var rvs=document.querySelectorAll(".rv");
   if(reduce||!("IntersectionObserver" in window)){rvs.forEach(function(e){e.classList.add("in");});}
